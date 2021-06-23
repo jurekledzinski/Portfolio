@@ -14,10 +14,20 @@ body {
   width: 100%;
   min-height: 100vh;
   font-size: 1.6rem;
+  overflow-x: hidden;
 }
 
 .main {
   width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Oswald", sans-serif;
 }
 
 h1 {
