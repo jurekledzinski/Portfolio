@@ -1,0 +1,24 @@
+@use "../../../scss-variables/media-queries" as*;
+
+.projects {
+  width: 100%;
+  min-height: 100vh;
+
+  @include media-queries(large) {
+    min-height: initial;
+    height: 600px;
+  }
+
+  &__wrapper {
+    width: 100%;
+    max-width: 1100px;
+    min-height: inherit;
+    margin: 0 auto;
+    background-color: lightblue;
+
+    @include media-queries(large) {
+      min-height: initial;
+      height: 100%;
+    }
+  }
+}
