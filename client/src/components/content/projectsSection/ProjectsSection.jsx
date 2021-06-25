@@ -17,7 +17,15 @@ const ProjectsSection = () => {
 
   return (
     <section className="projects" ref={projectsRef}>
-      <div className="projects__wrapper">Project section</div>
+      <div className="projects__wrapper">
+        <h3 className="projects__title">Projects</h3>
+
+        <div className="projects__slider-wrapper">
+          <div className="projects__slider-content">
+            <div className="projects__slider-img-wrapper"></div>
+          </div>
+        </div>
+      </div>
     </section>
   );
 };
