@@ -11,10 +11,19 @@ html {
 }
 
 body {
+  position: relative;
   width: 100%;
   min-height: 100vh;
   font-size: 1.6rem;
   overflow-x: hidden;
+}
+
+.cover-body {
+  width: 100%;
+  height: calc(100vh - 2400px);
+  background: #f99223;
+  background: -webkit-linear-gradient(to top, #f9d42308, #f99223, #f84100);
+  background: linear-gradient(to bottom, #f99223, #f84100);
 }
 
 .main {
