@@ -52,7 +52,11 @@ const Header = () => {
                 >
                   <Link
                     className={
-                      index === indexBtnMenu
+                      isActiveHeaderWrapper
+                        ? index === indexBtnMenu
+                          ? `${item.activeLink} ${item.classLinkOutHome}`
+                          : item.classLinkOutHome
+                        : index === indexBtnMenu
                         ? `${item.activeLink} ${item.classLink}`
                         : item.classLink
                     }
