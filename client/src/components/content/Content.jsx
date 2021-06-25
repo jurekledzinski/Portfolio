@@ -11,6 +11,7 @@ const Content = () => {
   return (
     <main className="main">
       <div className="main__cover"></div>
+      <div className="main__cover-bottom"></div>
       <HomeSection />
       <AboutSection />
       <ProjectsSection />
