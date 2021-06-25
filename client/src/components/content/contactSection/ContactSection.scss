@@ -1,6 +1,7 @@
 @use "../../../scss-variables/media-queries" as*;
 
 .contact {
+  position: relative;
   width: 100%;
   min-height: 100vh;
 
@@ -10,15 +11,191 @@
   }
 
   &__wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     max-width: 1100px;
     min-height: inherit;
+    padding: 80px 10px 50px 10px;
     margin: 0 auto;
-    background-color: orange;
+    z-index: 1;
+
+    @include media-queries(small) {
+      padding: 80px 20px 50px 20px;
+    }
+
+    @include media-queries(medium) {
+      justify-content: initial;
+    }
 
     @include media-queries(large) {
+      justify-content: initial;
+      align-items: initial;
       min-height: initial;
       height: 100%;
+      padding: 50px 50px 0 50px;
+    }
+  }
+
+  &__title {
+    // position: absolute;
+    // top: 20px;
+    margin-bottom: 80px;
+    text-align: left;
+    color: #333333;
+    letter-spacing: 1px;
+    z-index: 1;
+
+    @include media-queries(xsmall) {
+      top: 10px;
+    }
+
+    @include media-queries(large) {
+      position: initial;
+    }
+  }
+
+  &__svg-1 {
+    position: absolute;
+    bottom: 0;
+    transform: rotate(0deg);
+    transition: 0.3s;
+    height: 400px;
+    width: 100%;
+  }
+
+  &__svg-2 {
+    position: absolute;
+    bottom: 0;
+    transform: translate(0, 0px);
+    opacity: 1;
+  }
+
+  &__svg-3 {
+    position: absolute;
+    bottom: 0;
+    transform: translate(0, 50px);
+    opacity: 0.9;
+  }
+
+  &__svg-4 {
+    position: absolute;
+    bottom: 0;
+    transform: translate(0, 100px);
+    opacity: 0.8;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__form-wrapper {
+    position: relative;
+    width: 100%;
+
+    @include media-queries(medium) {
+      width: 100%;
+    }
+
+    @include media-queries(large) {
+      width: 50%;
+    }
+  }
+
+  &__label {
+    margin: 5px 0;
+    color: white;
+    font-size: 1.2rem;
+    font-family: "Roboto", sans-serif;
+
+    @include media-queries(small) {
+      font-size: 1.3rem;
+    }
+
+    @include media-queries(xmedium) {
+      font-size: 1.4rem;
+    }
+  }
+
+  &__input {
+    padding: 7px 5px;
+    margin-bottom: 10px;
+    border: none;
+    outline: none;
+    text-indent: 5px;
+    font-family: "Roboto", sans-serif;
+  }
+
+  &__textarea {
+    padding: 7px 5px;
+    min-height: 150px;
+    margin-bottom: 20px;
+    border: none;
+    outline: none;
+    text-indent: 5px;
+    font-family: "Roboto", sans-serif;
+  }
+
+  &__button {
+    width: 100%;
+    padding: 7px 0;
+    border: none;
+    outline: none;
+    background-color: #1981dc;
+    color: white;
+    font-size: 1.4rem;
+    font-family: "Oswald", sans-serif;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: 0.4s ease;
+
+    &:hover {
+      background-color: #0074d9;
+    }
+
+    @include media-queries(medium) {
+      width: 130px;
+      font-size: 1.6rem;
+    }
+
+    @include media-queries(large) {
+      font-size: 1.8rem;
+    }
+  }
+
+  &__error-msg {
+    color: #ff4136;
+    font-size: 1.2rem;
+    text-align: left;
+    font-weight: 100;
+    letter-spacing: 1px;
+    font-family: "Roboto", sans-serif;
+  }
+
+  &__icon {
+    position: absolute;
+    right: 0;
+    bottom: -40px;
+    font-size: 2.8rem;
+    color: white;
+    cursor: pointer;
+    transition: 0.4s ease;
+
+    &:hover {
+      color: #1981dc;
+    }
+
+    @include media-queries(medium) {
+      right: 0;
+      bottom: 0;
+    }
+
+    @include media-queries(large) {
+      right: -100%;
     }
   }
 }
