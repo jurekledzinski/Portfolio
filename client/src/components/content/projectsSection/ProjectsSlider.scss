@@ -1,0 +1,202 @@
+@use "../../../scss-variables/media-queries" as *;
+
+.projects {
+  &__slider-wrapper {
+    position: relative;
+    width: 900px;
+    height: 350px;
+    // position: absolute;
+    // top: 50%;
+    // left: 50%;
+    // transform: translate(-50%, -50%);
+    overflow: hidden;
+  }
+
+  &__slider-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    width: 100%;
+    height: 100%;
+  }
+
+  //   &__title {
+  //     position: absolute;
+  //     text-align: center;
+  //     font-size: 7rem;
+  //   }
+
+  &__slider-image {
+    position: relative;
+    min-width: 100%;
+    height: 100%;
+
+    transform: scale(1);
+    transition: 0.4s linear;
+    overflow: hidden;
+
+    &--mobile .projects__slider-img-frame {
+      transform: scale(1.15);
+      top: -80px;
+    }
+
+    &--mobile .projects__slider-image-cover {
+      height: 65px;
+
+      @media (min-width: 625px) {
+        height: 55px;
+      }
+    }
+
+    &--mobile .projects__slider-img-frame::after {
+      position: absolute;
+      display: block;
+      content: "";
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.3);
+      z-index: 2;
+    }
+
+    &:hover .projects__slider-img-frame,
+    &:focus .projects__slider-img-frame,
+    &:active .projects__slider-img-frame {
+      transform: scale(1.15);
+      top: -80px;
+    }
+
+    &:hover .projects__slider-image-cover,
+    &:focus .projects__slider-image-cover,
+    &:active .projects__slider-image-cover {
+      height: 65px;
+
+      @media (min-width: 625px) {
+        height: 55px;
+      }
+    }
+
+    &:hover .projects__slider-img-frame::after,
+    &:focus .projects__slider-img-frame::after,
+    &:active .projects__slider-img-frame::after {
+      position: absolute;
+      display: block;
+      content: "";
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.3);
+      z-index: 2;
+    }
+
+    @media (min-width: 500px) {
+      min-width: 50%;
+    }
+
+    @media (min-width: 700px) {
+      min-width: 33.33%;
+    }
+  }
+
+  &__slider-img-frame {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    transform: scale(1);
+    transition: 0.4s ease-out;
+  }
+
+  &__slider-image-cover {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px 5px 5px 5px;
+    background-color: white;
+    color: white;
+    font-family: "Segoe UI", sans-serif;
+    z-index: -1;
+    transition: 0.4s ease-out;
+
+    @media (min-width: 825px) {
+      padding: 10px 5px 5px 5px;
+    }
+
+    @media (min-width: 826px) {
+      padding: 5px;
+    }
+  }
+
+  &__slider-image-title {
+    color: #575757;
+    font-size: 1.2rem;
+    font-family: "Oswald", sans-serif;
+    text-align: left;
+
+    @media (min-width: 320px) {
+      font-size: 1.4rem;
+    }
+  }
+
+  &__slider-image-more {
+    color: #575757;
+    text-align: right;
+    font-size: 1.2rem;
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    cursor: pointer;
+
+    @media (min-width: 320px) {
+      font-size: 1.4rem;
+    }
+  }
+
+  &__slider-button-left,
+  &__slider-button-right {
+    position: absolute;
+    top: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: 0.4s ease;
+
+    &:hover {
+      color: orange;
+    }
+
+    @media (min-width: 280px) {
+      font-size: 2.4rem;
+    }
+
+    @media (min-width: 320px) {
+      font-size: 2.6rem;
+    }
+
+    @media (min-width: 500px) {
+      font-size: 3rem;
+    }
+  }
+
+  &__slider-button-left {
+    left: 2%;
+  }
+
+  &__slider-button-right {
+    right: 2%;
+  }
+}
