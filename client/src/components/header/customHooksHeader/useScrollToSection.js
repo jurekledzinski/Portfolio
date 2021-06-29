@@ -12,9 +12,9 @@ const useScrollToSection = (setIndexBtnMenu) => {
     const clickedSection = currentSection[indexLink];
 
     window.scrollTo({
-      top: isNaN((indexLink * clickedSection.offsetTop) / indexLink - 50)
+      top: isNaN((indexLink * clickedSection.offsetTop) / indexLink)
         ? 0
-        : (indexLink * clickedSection.offsetTop) / indexLink - 50,
+        : (indexLink * clickedSection.offsetTop) / indexLink,
       left: 0,
       behavior: "smooth",
     });
