@@ -227,7 +227,10 @@ const App = () => {
   };
 
   const startTouchDisplay = (e) => {
-    e.preventDefault();
+    if (e.cancelable) {
+      e.preventDefault();
+    }
+
     const touchX = e.touches[0].clientX;
     const touchY = e.touches[0].clientY;
     setInitialX(touchX);
@@ -236,7 +239,9 @@ const App = () => {
 
   useEffect(() => {
     const moveTouchDisplay = (e) => {
-      e.preventDefault();
+      if (e.cancelable) {
+        e.preventDefault();
+      }
 
       if (!initialX || !initialY) {
         return;
@@ -308,7 +313,9 @@ const App = () => {
   }, [handleMoveLeft, handleMoveRight]);
 
   const handleShowTextOnImage = (e) => {
-    e.preventDefault();
+    if (e.cancelable) {
+      e.preventDefault();
+    }
     e.target.parentElement.classList.add("projects__slider-image--mobile");
   };
 
