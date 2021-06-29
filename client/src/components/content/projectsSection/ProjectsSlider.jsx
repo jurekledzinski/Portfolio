@@ -1,10 +1,15 @@
 import React, { useCallback, useEffect, useState, useRef } from "react";
+import { useDispatch } from "react-redux";
 
 import "./ProjectsSlider.scss";
 
 import { ImagesData } from "./ProjectsData";
 
+import { showDetailsProject } from "../../../reduxeStore/actions/actionHideShowDetailsProject";
+import { addIndexCart } from "../../../reduxeStore/actions/actionGetIndexCart";
+
 const App = () => {
+  const dispatch = useDispatch();
   const cleanTime = useRef(null);
   const cleanTimeTwo = useRef(null);
   const isMounted = useRef(null);
@@ -89,8 +94,6 @@ const App = () => {
   };
 
   useEffect(() => {
-    // console.log(count, "real time");
-
     if (count === slides.length - 3) {
       setTimeout(() => {
         setTimeTransition(0);
@@ -321,7 +324,9 @@ const App = () => {
   }, []);
 
   const handleShowDetailsProject = (indexCart) => {
-    console.log(indexCart);
+    console.log(indexCart, " cart index slider");
+    dispatch(showDetailsProject());
+    dispatch(addIndexCart(indexCart));
   };
 
   return (
