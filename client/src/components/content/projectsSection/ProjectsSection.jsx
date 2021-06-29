@@ -1,15 +1,25 @@
 import React, { useEffect, useRef } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import "./ProjectsSection.scss";
 
 import Slider from "./ProjectsSlider";
+import ProjectDetails from "./ProjectDetails";
 
 import { addSingleSection } from "../../../reduxeStore/actions/actionSections";
+import { hideDetailsProject } from "../../../reduxeStore/actions/actionHideShowDetailsProject";
 
 const ProjectsSection = () => {
-  const projectsRef = useRef(null);
   const dispatch = useDispatch();
+  const dataVisibleDetails = useSelector(
+    (store) => store.visibilityProjectDetailsData
+  );
+  const { isVisible } = dataVisibleDetails;
+  const projectsRef = useRef(null);
+
+  const handleBackToSlider = () => {
+    dispatch(hideDetailsProject());
+  };
 
   useEffect(() => {
     if (projectsRef.current) {
@@ -19,10 +29,22 @@ const ProjectsSection = () => {
 
   return (
     <section className="projects" ref={projectsRef}>
-      <div className="projects__wrapper">
-        <h3 className="projects__title">Projects</h3>
-        <Slider />
-      </div>
+      {isVisible ? (
+        <article className="projects__wrapper-details">
+          <button
+            className="projects__button-back"
+            onClick={handleBackToSlider}
+          >
+            <i className="fas fa-chevron-left"></i> Back
+          </button>
+          <ProjectDetails />
+        </article>
+      ) : (
+        <div className="projects__wrapper">
+          <h3 className="projects__title">Projects</h3>
+          <Slider />
+        </div>
+      )}
     </section>
   );
 };
