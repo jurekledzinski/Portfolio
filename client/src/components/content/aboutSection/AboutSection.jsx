@@ -1,15 +1,24 @@
-import React, { useEffect, useRef } from "react";
+import React, { Fragment, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 
 import "./AboutSection.scss";
 
 import { addSingleSection } from "../../../reduxeStore/actions/actionSections";
-
 import { skillsData } from "./AboutData";
+
+import AboutSvg from "./AboutSvg";
+import ProgressCircle from "../../others/ProgressCircle";
+
+import useFetchResume from "./useFetchResume";
+import useFetchCertificates from "./useFetchCertificates";
 
 const AboutSection = () => {
   const aboutRef = useRef(null);
   const dispatch = useDispatch();
+
+  const { downloadPrecentageResume, handleFetchResume } = useFetchResume();
+  const { downloadPrecentaCertificates, handleFetchCertificates } =
+    useFetchCertificates();
 
   useEffect(() => {
     if (aboutRef.current) {
@@ -58,19 +67,70 @@ const AboutSection = () => {
             </div>
           </div>
           <div className="about__icons-wrapper">
-            <span className="about__icon">
-              <i className="far fa-file"></i>
-            </span>
-            <span className="about__icon">
-              <i className="far fa-file"></i>
-              <i className="fas fa-certificate"></i>
-            </span>
-            <span className="about__icon">
+            <button
+              className="about__icon"
+              onClick={handleFetchResume}
+              disabled={
+                downloadPrecentageResume || downloadPrecentaCertificates
+                  ? true
+                  : false
+              }
+            >
+              {downloadPrecentageResume ? (
+                <ProgressCircle progress={downloadPrecentageResume} />
+              ) : (
+                <i className="far fa-file"></i>
+              )}
+            </button>
+            <button
+              className="about__icon"
+              onClick={handleFetchCertificates}
+              disabled={
+                downloadPrecentageResume || downloadPrecentaCertificates
+                  ? true
+                  : false
+              }
+            >
+              {downloadPrecentaCertificates ? (
+                <ProgressCircle progress={downloadPrecentaCertificates} />
+              ) : (
+                <Fragment>
+                  <i className="far fa-file"></i>
+                  <i className="fas fa-certificate"></i>
+                </Fragment>
+              )}
+            </button>
+            <a className="about__icon" href="https://www.linkedin.com">
               <i className="fab fa-linkedin"></i>
-            </span>
+            </a>
+            <a className="about__icon" href="https://github.com">
+              <i className="fab fa-github"></i>
+            </a>
           </div>
         </div>
-        <div className="about__right"></div>
+        <div className="about__right">
+          <div className="about__right-wrapper">
+            <div className="about__feature-1">
+              <h4 className="about__feature-name">Supportive</h4>
+            </div>
+            <div className="about__feature-2">
+              <h5 className="about__feature-name">Ambitious</h5>
+            </div>
+            <div className="about__feature-3">
+              <h5 className="about__feature-name">Smiling</h5>
+            </div>
+            <div className="about__feature-4">
+              <h5 className="about__feature-name">Creative</h5>
+            </div>
+            <div className="about__feature-5">
+              <h5 className="about__feature-name">Friendly</h5>
+            </div>
+            <div className="about__feature-6">
+              <h5 className="about__feature-name">Patient</h5>
+            </div>
+          </div>
+        </div>
+        <AboutSvg />
       </div>
     </section>
   );
