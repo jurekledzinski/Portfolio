@@ -51,6 +51,16 @@
       background-color: initial;
       transform: inherit;
       visibility: visible;
+      animation: slideMenu linear 1s forwards;
+
+      @keyframes slideMenu {
+        from {
+          transform: translateX(-100%);
+        }
+        to {
+          transform: translateX(0%);
+        }
+      }
     }
   }
 
