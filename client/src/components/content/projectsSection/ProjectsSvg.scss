@@ -1,0 +1,30 @@
+@use "../../../scss-variables/media-queries" as *;
+
+.projects {
+  &__svg-1 {
+    position: absolute;
+    top: -0.5px;
+    left: 0;
+    transform: rotate(180deg);
+    transition: 0.3s;
+
+    @include media-queries(large) {
+      display: none;
+    }
+  }
+
+  &__svg-2 {
+    transform: translate(0, 0px);
+    opacity: 1;
+  }
+
+  &__svg-3 {
+    transform: translate(0, 50px);
+    opacity: 0.9;
+  }
+
+  &__svg-4 {
+    transform: translate(0, 100px);
+    opacity: 0.8;
+  }
+}

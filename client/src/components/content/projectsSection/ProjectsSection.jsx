@@ -5,6 +5,7 @@ import "./ProjectsSection.scss";
 
 import Slider from "./ProjectsSlider";
 import ProjectDetails from "./ProjectDetails";
+import ProjectsSvg from "./ProjectsSvg";
 
 import { addSingleSection } from "../../../reduxeStore/actions/actionSections";
 import { hideDetailsProject } from "../../../reduxeStore/actions/actionHideShowDetailsProject";
@@ -43,6 +44,7 @@ const ProjectsSection = () => {
         <div className="projects__wrapper">
           <h3 className="projects__title">Projects</h3>
           <Slider />
+          <ProjectsSvg />
         </div>
       )}
     </section>
