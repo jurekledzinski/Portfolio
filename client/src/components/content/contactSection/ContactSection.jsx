@@ -71,14 +71,12 @@ const ContactSection = () => {
   return (
     <section className="contact" ref={contactRef}>
       <div className="contact__wrapper">
-        {/* <h3 className="contact__title">Contact</h3> */}
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}
           onSubmit={onSubmit}
         >
           {(formik) => {
-            console.log(formik);
             return (
               <div className="contact__form-wrapper">
                 <h3 className="contact__title">Contact</h3>
@@ -121,13 +119,35 @@ const ContactSection = () => {
                     Send
                   </button>
                 </Form>
-                <span className="contact__icon">
+                <a className="contact__icon" href="https://www.linkedin.com">
                   <i className="fab fa-linkedin"></i>
-                </span>
+                </a>
               </div>
             );
           }}
         </Formik>
+
+        <svg
+          className="contact__blob-1"
+          preserveAspectRatio="none"
+          viewBox="0 0 500 500"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlnsXlink="http://www.w3.org/1999/xlink"
+          width="100%"
+          id="blobSvg"
+        >
+          <defs>
+            <linearGradient id="gradient-15" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop stopColor="rgba(253, 200, 48, 0.55)" offset="0%"></stop>
+              <stop stopColor="rgba(243, 115, 53, 0.4)" offset="100%"></stop>
+            </linearGradient>
+          </defs>
+          <path
+            id="blob"
+            d="M313.5,326Q299,402,237,353Q175,304,132,218.5Q89,133,201.5,93Q314,53,321,151.5Q328,250,313.5,326Z"
+            fill="url(#gradient-15)"
+          ></path>
+        </svg>
       </div>
       <ContactSvgWave />
     </section>
