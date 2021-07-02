@@ -9,6 +9,11 @@ import ProjectsSvg from "./ProjectsSvg";
 
 import { addSingleSection } from "../../../reduxeStore/actions/actionSections";
 import { hideDetailsProject } from "../../../reduxeStore/actions/actionHideShowDetailsProject";
+import {
+  hideCoverImage,
+  showCoverImage,
+} from "../../../reduxeStore/actions/actionHideCoverImage";
+import { showImageLoaderSlider } from "../../../reduxeStore/actions/actionLoaderImagesSlider";
 
 const ProjectsSection = () => {
   const dispatch = useDispatch();
@@ -16,16 +21,24 @@ const ProjectsSection = () => {
     (store) => store.visibilityProjectDetailsData
   );
   const { isVisible } = dataVisibleDetails;
+
   const projectsRef = useRef(null);
+  const cleanTime = useRef(null);
 
   const handleBackToSlider = () => {
     dispatch(hideDetailsProject());
+    dispatch(hideCoverImage());
+    dispatch(showImageLoaderSlider());
+    cleanTime.current = setTimeout(() => {
+      dispatch(showCoverImage());
+    }, 300);
   };
 
   useEffect(() => {
     if (projectsRef.current) {
       dispatch(addSingleSection(projectsRef.current));
     }
+    return () => clearTimeout(cleanTime.current);
   }, []);
 
   return (

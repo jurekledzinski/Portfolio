@@ -20,7 +20,6 @@
     position: relative;
     min-width: 100%;
     height: 100%;
-
     transform: scale(1);
     transition: 0.4s linear;
     overflow: hidden;
@@ -32,9 +31,22 @@
 
     &--mobile .projects__slider-image-cover {
       height: 65px;
+      padding: 10px 5px 5px 5px;
+
+      @include media-queries(small) {
+        padding: 15px 5px 5px 5px;
+      }
 
       @media (min-width: 625px) {
         height: 55px;
+      }
+
+      @media (min-width: 825px) {
+        padding: 10px 5px 5px 5px;
+      }
+
+      @media (min-width: 826px) {
+        padding: 5px;
       }
     }
 
@@ -59,9 +71,18 @@
     &:focus .projects__slider-image-cover,
     &:active .projects__slider-image-cover {
       height: 65px;
+      padding: 10px 5px 5px 5px;
 
       @media (min-width: 625px) {
         height: 55px;
+      }
+
+      @media (min-width: 825px) {
+        padding: 10px 5px 5px 5px;
+      }
+
+      @media (min-width: 826px) {
+        padding: 5px;
       }
     }
 
@@ -77,7 +98,7 @@
       z-index: 2;
     }
 
-    @media (min-width: 500px) {
+    @include media-queries(medium) {
       min-width: 50%;
     }
 
@@ -99,6 +120,22 @@
     transition: 0.4s ease-out;
   }
 
+  &__slider-cover-loader {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #8a8a8a;
+  }
+
+  &__dummy-img {
+    display: none;
+    width: 0;
+    height: 0;
+    background-color: transparent;
+  }
+
   &__slider-image-cover {
     position: absolute;
     left: 0;
@@ -108,19 +145,14 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 10px 5px 5px 5px;
     background-color: white;
     color: white;
     font-family: "Segoe UI", sans-serif;
     z-index: -1;
     transition: 0.4s ease-out;
 
-    @media (min-width: 825px) {
-      padding: 10px 5px 5px 5px;
-    }
-
-    @media (min-width: 826px) {
-      padding: 5px;
+    &--change-color {
+      background-color: #8a8a8a;
     }
   }
 
@@ -130,7 +162,7 @@
     font-family: "Oswald", sans-serif;
     text-align: left;
 
-    @media (min-width: 320px) {
+    @include media-queries(small) {
       font-size: 1.4rem;
     }
   }
@@ -143,7 +175,7 @@
     font-weight: 300;
     cursor: pointer;
 
-    @media (min-width: 320px) {
+    @include media-queries(small) {
       font-size: 1.4rem;
     }
   }
@@ -152,7 +184,7 @@
   &__slider-button-right {
     position: absolute;
     top: 50%;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     width: 30px;
@@ -164,20 +196,22 @@
     font-size: 2rem;
     cursor: pointer;
     transition: 0.4s ease;
+    animation: hideButons 0.5s linear forwards;
 
     &:hover {
       color: orange;
     }
 
-    @media (min-width: 280px) {
+    @include media-queries(xsmall) {
       font-size: 2.4rem;
     }
 
-    @media (min-width: 320px) {
+    @include media-queries(small) {
       font-size: 2.6rem;
     }
 
-    @media (min-width: 500px) {
+    @include media-queries(medium) {
+      display: flex;
       font-size: 3rem;
     }
   }
@@ -188,5 +222,14 @@
 
   &__slider-button-right {
     right: 2%;
+  }
+
+  @keyframes hideButons {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
 }

@@ -20,6 +20,7 @@
     min-height: inherit;
     margin: 0 auto;
     padding: 80px 10px 50px 10px;
+    overflow: hidden;
 
     @include media-queries(small) {
       padding: 80px 20px 50px 20px;

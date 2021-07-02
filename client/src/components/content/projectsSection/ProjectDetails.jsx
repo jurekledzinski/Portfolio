@@ -4,9 +4,11 @@ import { useSelector } from "react-redux";
 import "./ProjectDetails.scss";
 
 import { ImagesData } from "./ProjectsData";
+import CircleSpinner from "../../others/CircleSpinner";
 
 const ProjectDetails = () => {
   const dataIndexCart = useSelector((store) => store.indexCartData);
+  const dataLoader = useSelector((store) => store.showLoaderDetailsData);
   const [carts, setCarts] = useState([]);
 
   const copyImages = () => {
@@ -57,7 +59,13 @@ const ProjectDetails = () => {
                 <div
                   className="projects__image-devices-prewview"
                   style={{ backgroundImage: `url(${item1.imgPreview})` }}
-                ></div>
+                >
+                  {dataLoader.isLoad && (
+                    <div className="projects__cover-details-img">
+                      <CircleSpinner />
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           );

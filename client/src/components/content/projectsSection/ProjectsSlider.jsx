@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState, useRef } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import "./ProjectsSlider.scss";
 
@@ -7,11 +7,22 @@ import { ImagesData } from "./ProjectsData";
 
 import { showDetailsProject } from "../../../reduxeStore/actions/actionHideShowDetailsProject";
 import { addIndexCart } from "../../../reduxeStore/actions/actionGetIndexCart";
+import {
+  hideLoaderInDetails,
+  showLoaderInDetails,
+} from "../../../reduxeStore/actions/actionShowLoaderInDetailsProject";
+import { hideImageLoaderSlider } from "../../../reduxeStore/actions/actionLoaderImagesSlider";
+
+import CircleSpinner from "../../others/CircleSpinner";
 
 const App = () => {
+  const dataLoader = useSelector((store) => store.loaderImageData);
+  const dataColorCover = useSelector((store) => store.hideCoverImageData);
+  const { isHideCover } = dataColorCover;
   const dispatch = useDispatch();
   const cleanTime = useRef(null);
   const cleanTimeTwo = useRef(null);
+  const cleanTimeThree = useRef(null);
   const isMounted = useRef(null);
   const slidesContainer = useRef(null);
   const [count, setCount] = useState(2);
@@ -47,7 +58,6 @@ const App = () => {
   };
 
   const handleMoveLeft = useCallback(() => {
-    console.log("Click left", count);
     clearHover();
     if (count === slides.length - 3) {
       return;
@@ -58,7 +68,6 @@ const App = () => {
 
   const handleMoveRight = useCallback(() => {
     clearHover();
-    console.log("click right", count);
     if (count === 0) {
       return;
     }
@@ -109,14 +118,6 @@ const App = () => {
     setSlides(imgs);
   }, []);
 
-  useEffect(() => {
-    isMounted.current = true;
-    return () => {
-      isMounted.current = false;
-      clearTimeout(cleanTime.current);
-    };
-  }, []);
-
   const sizeSliderDefaultAndResizeLess1200 = (ratioHeight) => {
     let diff2 = (900 * 100) / window.innerWidth - (900 * 100) / 900;
     let px = (window.innerWidth / 100) * 100 - diff2 - 100;
@@ -149,13 +150,13 @@ const App = () => {
 
     if (window.innerWidth < 768 && isMounted.current) {
       let heightSliderWrapper = window.innerHeight;
-      let heightratio = (heightSliderWrapper * ratio) / 2;
+      let heightratio = (heightSliderWrapper * ratio) / 1.8;
       sizeSliderDefaultAndResizeLess768(heightratio);
     }
 
     if (window.innerWidth <= 500 && isMounted.current) {
       let heightSliderWrapper = window.innerHeight;
-      let heightratio = (heightSliderWrapper * ratio) / 1.6;
+      let heightratio = (heightSliderWrapper * ratio) / 1;
       sizeSliderResizeLess500(heightratio);
     }
   }, [heightSlider, widthSlider]);
@@ -182,13 +183,13 @@ const App = () => {
 
       if (window.innerWidth < 768 && isMounted.current) {
         let heightInnerWindow = window.innerHeight;
-        let heightRatio = (heightInnerWindow * ratio) / 2;
+        let heightRatio = (heightInnerWindow * ratio) / 1.8;
         sizeSliderDefaultAndResizeLess768(heightRatio);
       }
 
       if (window.innerWidth <= 500 && isMounted.current) {
         let heightInnerWindow = window.innerHeight;
-        let heightRatio = (heightInnerWindow * ratio) / 1.6;
+        let heightRatio = (heightInnerWindow * ratio) / 1;
         sizeSliderResizeLess500(heightRatio);
       }
     };
@@ -252,8 +253,6 @@ const App = () => {
 
       const diffrenceX = initialX - currenTouchX;
       const diffrenceY = initialY - currenTouchY;
-
-      console.log(diffrenceX, " diffrence");
 
       if (Math.abs(diffrenceX) > Math.abs(diffrenceY)) {
         if (diffrenceX > 1) {
@@ -330,11 +329,33 @@ const App = () => {
     return () => clearTimeout(cleanTimeTwo.current);
   }, []);
 
-  const handleShowDetailsProject = (indexCart) => {
-    console.log(indexCart, " cart index slider");
+  const handleShowDetailsProject = (indexCart, imgPreview) => {
+    dispatch(showLoaderInDetails());
+
+    let img = new Image();
+    img.src = imgPreview;
+    img.onload = () => {
+      dispatch(hideLoaderInDetails());
+    };
     dispatch(showDetailsProject());
     dispatch(addIndexCart(indexCart));
   };
+
+  const handleOnLoadImage = () => {
+    cleanTimeThree.current = setTimeout(
+      () => dispatch(hideImageLoaderSlider()),
+      400
+    );
+  };
+
+  useEffect(() => {
+    isMounted.current = true;
+    return () => {
+      isMounted.current = false;
+      clearTimeout(cleanTime.current);
+      clearTimeout(cleanTimeThree.current);
+    };
+  }, []);
 
   return (
     <div
@@ -359,13 +380,31 @@ const App = () => {
             <div
               className="projects__slider-img-frame"
               style={{ backgroundImage: `url(${item.imgUrl})` }}
-            ></div>
-            <div className="projects__slider-image-cover">
+            >
+              {!dataLoader.isLoadImg && (
+                <div className="projects__slider-cover-loader">
+                  <img
+                    src={item.imgUrl}
+                    alt="Image"
+                    className="projects__dummy-img"
+                    onLoad={handleOnLoadImage}
+                  />
+                  <CircleSpinner />
+                </div>
+              )}
+            </div>
+            <div
+              className={
+                isHideCover
+                  ? "projects__slider-image-cover projects__slider-image-cover--change-color"
+                  : "projects__slider-image-cover"
+              }
+            >
               <p className="projects__slider-image-title">{item.title}</p>
 
               <p
                 className="projects__slider-image-more"
-                onClick={() => handleShowDetailsProject(index)}
+                onClick={() => handleShowDetailsProject(index, item.imgPreview)}
               >
                 Read more ...
               </p>
@@ -373,11 +412,22 @@ const App = () => {
           </div>
         ))}
       </div>
-      <button className="projects__slider-button-left" onClick={handleMoveLeft}>
+      <button
+        className={
+          isHideCover
+            ? "projects__slider-button-left projects__slider-button-left--hide"
+            : "projects__slider-button-left"
+        }
+        onClick={handleMoveLeft}
+      >
         <i className="fas fa-chevron-left"></i>
       </button>
       <button
-        className="projects__slider-button-right"
+        className={
+          isHideCover
+            ? "projects__slider-button-right projects__slider-button-right--hide"
+            : "projects__slider-button-right"
+        }
         onClick={handleMoveRight}
       >
         <i className="fas fa-chevron-right"></i>

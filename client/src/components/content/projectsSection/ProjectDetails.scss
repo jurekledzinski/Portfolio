@@ -59,6 +59,7 @@
   }
 
   &__image-devices-prewview {
+    position: relative;
     width: 100%;
     min-height: inherit;
     background-repeat: no-repeat;
@@ -73,6 +74,20 @@
 
     @media (max-width: 855px) and (orientation: landscape) {
       background-size: 50% auto;
+    }
+  }
+
+  &__cover-details-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: inherit;
+    background-color: transparent;
+
+    @include media-queries(large) {
+      min-height: initial;
+      height: 50%;
     }
   }
 
