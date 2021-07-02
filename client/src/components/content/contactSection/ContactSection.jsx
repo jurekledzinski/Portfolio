@@ -17,12 +17,15 @@ import {
 import "./ContactSection.scss";
 
 import { addSingleSection } from "../../../reduxeStore/actions/actionSections";
+import useObserverContactWave from "./useObserverContactWave";
 
 const ContactSection = () => {
   const contactRef = useRef(null);
   const dispatch = useDispatch();
   const dataMsgServer = useSelector((store) => store.serverMsgData);
   const idTimeout = useRef(null);
+
+  useObserverContactWave();
 
   const initialValues = {
     name: "",

@@ -65,8 +65,8 @@
     height: 400px;
     width: 100%;
     display: block;
-    animation: animateWaveContact 1000ms cubic-bezier(0.23, 1, 0.32, 1) forwards;
     transform-origin: bottom;
+    transform: scale(1, 0);
 
     @keyframes animateWaveContact {
       0% {
@@ -84,8 +84,6 @@
     bottom: 0;
     transform: translate(0, 0px);
     opacity: 1;
-    animation: animateWaveContactTwo 2000ms cubic-bezier(0.23, 1, 0.32, 1)
-      forwards;
     transform-origin: bottom;
 
     @keyframes animateWaveContactTwo {
@@ -104,8 +102,6 @@
     bottom: 0;
     transform: translate(0, 50px);
     opacity: 0.9;
-    animation: animateWaveContactThree 3000ms cubic-bezier(0.23, 1, 0.32, 1)
-      forwards;
     transform-origin: bottom;
 
     @keyframes animateWaveContactThree {
@@ -124,8 +120,6 @@
     bottom: 0;
     transform: translate(0, 100px);
     opacity: 0.8;
-    animation: animateWaveContactFour 4000ms cubic-bezier(0.23, 1, 0.32, 1)
-      forwards;
     transform-origin: bottom;
 
     @keyframes animateWaveContactFour {
