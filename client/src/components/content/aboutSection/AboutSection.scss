@@ -186,24 +186,95 @@
     grid-area: supportive;
     background-color: rgba(89, 173, 255, 0.3);
     background-color: rgb(89 173 255 / 60%);
+    transform: translate(0, 0px);
+    opacity: 0;
+    transform: scale(0);
+    @keyframes animate1 {
+      from {
+        opacity: 0;
+        transform: scale(0);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1) translate(0px, 0px);
+        transform-origin: bottom;
+      }
+    }
   }
   &__feature-2 {
     grid-area: ambitious;
     background-color: rgba(248, 200, 34, 0.4);
     background-color: rgba(248, 200, 34, 0.7);
     transform: translate(0, 50px);
+    opacity: 0;
+    transform: scale(0);
+
+    @keyframes animate2 {
+      from {
+        opacity: 0;
+        transform: scale(0);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1) translate(0px, 50px);
+        transform-origin: bottom;
+      }
+    }
 
     @include media-queries(large) {
-      transform: translate(-39px, 40px);
+      //   transform: translate(-39px, 40px);
+
+      @keyframes animate2 {
+        from {
+          opacity: 0;
+          transform: scale(0);
+        }
+
+        to {
+          opacity: 1;
+          transform: scale(1) translate(-39px, 40px);
+          transform-origin: bottom;
+        }
+      }
     }
   }
   &__feature-3 {
     grid-area: smiling;
     background-color: rgba(232, 139, 255, 0.3);
     background-color: rgba(232, 139, 255, 0.7);
+    opacity: 0;
+    transform: scale(0);
+
+    @keyframes animate3 {
+      from {
+        opacity: 0;
+        transform: scale(0);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+        transform-origin: bottom;
+      }
+    }
 
     @include media-queries(large) {
-      transform: translate(-39px, -20px);
+      //   transform: translate(-39px, -20px);
+
+      @keyframes animate3 {
+        from {
+          opacity: 0;
+          transform: scale(0);
+        }
+
+        to {
+          opacity: 1;
+          transform: scale(1) translate(-39px, -20px);
+          transform-origin: bottom;
+        }
+      }
     }
   }
   &__feature-4 {
@@ -211,28 +282,113 @@
     background-color: rgba(255, 128, 41, 0.3);
     background-color: rgba(255, 128, 41, 0.5);
     transform: translate(0, 50px);
+    opacity: 0;
+    transform: scale(0);
+
+    @keyframes animate4 {
+      from {
+        opacity: 0;
+        transform: scale(0);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1) translate(0px, 50px);
+        transform-origin: bottom;
+      }
+    }
 
     @include media-queries(large) {
-      transform: translate(33px, 60px);
+      //   transform: translate(33px, 60px);
+      @keyframes animate4 {
+        from {
+          opacity: 0;
+          transform: scale(0);
+        }
+
+        to {
+          opacity: 1;
+          transform: scale(1) translate(33px, 60px);
+          transform-origin: bottom;
+        }
+      }
     }
   }
+
   &__feature-5 {
     grid-area: friendly;
     background-color: rgba(252, 72, 80, 0.3);
     background-color: rgba(252, 72, 80, 0.5);
     transform: translate(0, 50px);
+    opacity: 0;
+    transform: scale(0);
+
+    @keyframes animate5 {
+      from {
+        opacity: 0;
+        transform: scale(0);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1) translate(0, 50px);
+        transform-origin: bottom;
+      }
+    }
 
     @include media-queries(large) {
-      transform: translate(-38px, -40px);
+      //   transform: translate(-38px, -40px);
+
+      @keyframes animate5 {
+        from {
+          opacity: 0;
+          transform: scale(0);
+        }
+
+        to {
+          opacity: 1;
+          transform: scale(1) translate(-38px, -40px);
+          transform-origin: bottom;
+        }
+      }
     }
   }
+
   &__feature-6 {
     grid-area: patient;
     background-color: rgba(144, 196, 24, 0.3);
     background-color: rgba(144, 196, 24, 0.5);
+    opacity: 0;
+    transform: scale(0);
+
+    @keyframes animate6 {
+      from {
+        opacity: 0;
+        transform: scale(0);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+        transform-origin: bottom;
+      }
+    }
 
     @include media-queries(large) {
-      transform: translateX(85px);
+      //   transform: translateX(85px);
+
+      @keyframes animate6 {
+        from {
+          opacity: 0;
+          transform: scale(0);
+        }
+
+        to {
+          opacity: 1;
+          transform: scale(1) translateX(85px);
+          transform-origin: bottom;
+        }
+      }
     }
   }
 

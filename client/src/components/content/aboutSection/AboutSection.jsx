@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useRef } from "react";
+import React, { Fragment, useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 
 import "./AboutSection.scss";
@@ -6,11 +6,13 @@ import "./AboutSection.scss";
 import { addSingleSection } from "../../../reduxeStore/actions/actionSections";
 import { skillsData } from "./AboutData";
 
+import AboutRight from "./AboutRight";
 import AboutSvg from "./AboutSvg";
 import ProgressCircle from "../../others/ProgressCircle";
 
 import useFetchResume from "./useFetchResume";
 import useFetchCertificates from "./useFetchCertificates";
+import useObserverAbout from "./useObserverAbout";
 
 const AboutSection = () => {
   const aboutRef = useRef(null);
@@ -19,6 +21,7 @@ const AboutSection = () => {
   const { downloadPrecentageResume, handleFetchResume } = useFetchResume();
   const { downloadPrecentaCertificates, handleFetchCertificates } =
     useFetchCertificates();
+  useObserverAbout();
 
   useEffect(() => {
     if (aboutRef.current) {
@@ -108,28 +111,7 @@ const AboutSection = () => {
             </a>
           </div>
         </div>
-        <div className="about__right">
-          <div className="about__right-wrapper">
-            <div className="about__feature-1">
-              <h4 className="about__feature-name">Supportive</h4>
-            </div>
-            <div className="about__feature-2">
-              <h5 className="about__feature-name">Ambitious</h5>
-            </div>
-            <div className="about__feature-3">
-              <h5 className="about__feature-name">Smiling</h5>
-            </div>
-            <div className="about__feature-4">
-              <h5 className="about__feature-name">Creative</h5>
-            </div>
-            <div className="about__feature-5">
-              <h5 className="about__feature-name">Friendly</h5>
-            </div>
-            <div className="about__feature-6">
-              <h5 className="about__feature-name">Patient</h5>
-            </div>
-          </div>
-        </div>
+        <AboutRight />
         <AboutSvg />
       </div>
     </section>
