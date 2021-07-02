@@ -7,8 +7,6 @@ const ServerMessage = () => {
   let dataMsgServer = useSelector((store) => store.serverMsgData);
   const { errorServerMsg, successServerMsg } = dataMsgServer;
 
-  console.log(dataMsgServer, "dataMsgServer server message component");
-
   return (
     <Fragment>
       {errorServerMsg ||
