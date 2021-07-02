@@ -20,10 +20,8 @@ const useObserverSections = () => {
       if (isMounted.current) {
         entries.forEach((item) => {
           if (item.isIntersecting) {
-            console.log("czyli menu na header");
             dispatch(setInActiveHeaderWrapper());
           } else {
-            console.log("menu poza header wychodzi");
             dispatch(setActiveHeaderWrapper());
           }
         });
