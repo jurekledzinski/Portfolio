@@ -21,10 +21,10 @@ const App = () => {
   const { isHideCover } = dataColorCover;
   const dispatch = useDispatch();
   const cleanTime = useRef(null);
-  const cleanTimeTwo = useRef(null);
   const cleanTimeThree = useRef(null);
   const isMounted = useRef(null);
   const slidesContainer = useRef(null);
+  const [isActive, setIsActive] = useState(null);
   const [count, setCount] = useState(2);
   const [initialX, setInitialX] = useState(null);
   const [initialY, setInitialY] = useState(null);
@@ -58,7 +58,7 @@ const App = () => {
   };
 
   const handleMoveLeft = useCallback(() => {
-    clearHover();
+    setIsActive(null);
     if (count === slides.length - 3) {
       return;
     }
@@ -67,7 +67,7 @@ const App = () => {
   }, [count, slides.length]);
 
   const handleMoveRight = useCallback(() => {
-    clearHover();
+    setIsActive(null);
     if (count === 0) {
       return;
     }
@@ -163,6 +163,10 @@ const App = () => {
 
   useEffect(() => {
     const resizeSlider = () => {
+      let isTouch =
+        "ontouchstart" in window || window.navigator.maxTouchPoints > 0;
+      document.documentElement.className = isTouch ? "touch" : "no-touch";
+
       setSlideTransform(window.innerWidth);
       setWidthSlider(900 + "px");
       setHeightSlider(350 + "px");
@@ -215,23 +219,7 @@ const App = () => {
     setSlideTransform(window.innerWidth ? window.innerWidth : widthScreen);
   }, [widthScreen]);
 
-  const clearHover = () => {
-    let arraySlides = [...slidesContainer.current.children];
-
-    arraySlides.forEach((item) => {
-      if (item.classList.contains("projects__slider-image--mobile")) {
-        item.classList.remove("projects__slider-image--mobile");
-        return;
-      }
-      return;
-    });
-  };
-
   const startTouchDisplay = (e) => {
-    if (e.cancelable) {
-      e.preventDefault();
-    }
-
     const touchX = e.touches[0].clientX;
     const touchY = e.touches[0].clientY;
     setInitialX(touchX);
@@ -240,10 +228,6 @@ const App = () => {
 
   useEffect(() => {
     const moveTouchDisplay = (e) => {
-      if (e.cancelable) {
-        e.preventDefault();
-      }
-
       if (!initialX || !initialY) {
         return;
       }
@@ -257,10 +241,10 @@ const App = () => {
       if (Math.abs(diffrenceX) > Math.abs(diffrenceY)) {
         if (diffrenceX > 1) {
           slidesContainer.current.dispatchEvent(events.swipeLeft);
-          clearHover();
+          setIsActive(null);
         } else if (diffrenceX < -0.4995) {
           slidesContainer.current.dispatchEvent(events.swipeRight);
-          clearHover();
+          setIsActive(null);
         }
       } else {
         if (diffrenceY > 0) {
@@ -311,24 +295,6 @@ const App = () => {
     };
   }, [handleMoveLeft, handleMoveRight]);
 
-  const handleShowTextOnImage = (e) => {
-    if (e.cancelable) {
-      e.preventDefault();
-    }
-    e.target.parentElement.classList.add("projects__slider-image--mobile");
-  };
-
-  useEffect(() => {
-    cleanTimeTwo.current = setTimeout(() => {
-      let arraySlides = [...slidesContainer.current.children];
-      arraySlides.forEach((item) => {
-        item.addEventListener("touchstart", handleShowTextOnImage);
-      });
-    }, 100);
-
-    return () => clearTimeout(cleanTimeTwo.current);
-  }, []);
-
   const handleShowDetailsProject = (indexCart, imgPreview) => {
     dispatch(showLoaderInDetails());
 
@@ -348,7 +314,14 @@ const App = () => {
     );
   };
 
+  const handleShowTitle = (index) => {
+    setIsActive(index);
+  };
+
   useEffect(() => {
+    let isTouch =
+      "ontouchstart" in window || window.navigator.maxTouchPoints > 0;
+    document.documentElement.className = isTouch ? "touch" : "no-touch";
     isMounted.current = true;
     return () => {
       isMounted.current = false;
@@ -372,10 +345,14 @@ const App = () => {
       >
         {slides.map((item, index) => (
           <div
-            className={`projects__slider-image projects__slider-image--${
-              index + 1
-            }`}
+            className={
+              isActive === index
+                ? "projects__slider-image projects__slider-image--mobile"
+                : "projects__slider-image"
+            }
             key={index}
+            // onClick={() => handleShowTitle(index)}
+            onTouchStart={() => handleShowTitle(index)}
           >
             <div
               className="projects__slider-img-frame"
