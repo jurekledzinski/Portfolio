@@ -26,15 +26,12 @@
       padding: 50px 20px 0 20px;
     }
 
-    @include media-queries(xmedium) {
-      padding: 50px 50px 0 50px;
-    }
-
     @include media-queries(large) {
       flex-direction: row;
       justify-content: initial;
       min-height: initial;
       height: 100%;
+      padding: 50px 50px 0 50px;
       transform: initial;
     }
   }
@@ -74,17 +71,32 @@
     letter-spacing: 1px;
     cursor: pointer;
 
+    @include media-queries(xsmall) {
+      width: 100px;
+      padding: 5px 0px;
+    }
+
     @include media-queries(small) {
-      width: 140px;
+      width: 120px;
       padding: 7px 0px;
       margin-bottom: 50px;
-      font-size: 2rem;
+      font-size: 1.6rem;
     }
 
     @include media-queries(medium) {
       width: 160px;
       padding: 7px 0px;
       margin-bottom: 50px;
+    }
+
+    @media (min-width: 600px) {
+      padding: 10px 0;
+    }
+
+    @media (orientation: landscape) and (max-width: 320px) {
+      width: 85px;
+      padding: 5px 0px;
+      font-size: 1.4rem;
     }
   }
 
@@ -101,29 +113,42 @@
   }
 
   &__right-inner-wrapper {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
     width: 100%;
-    background-image: url("https://firebasestorage.googleapis.com/v0/b/portfolio-628b9.appspot.com/o/blob-main-page-1.svg?alt=media&token=4a69849a-d17f-4316-868e-544289701131");
-    background-position: center bottom;
-    background-size: cover;
-    background-repeat: no-repeat;
-    margin: 0 -25px -55px 0;
-    padding-top: 60%;
-    height: 0;
+    height: 100%;
 
-    @include media-queries(xsmall) {
-      margin: 0 -25px 0px 0;
+    @include media-queries(medium) {
+      margin-bottom: 30px;
     }
 
-    @include media-queries(small) {
-      margin: 0 -40px -70px 0;
+    @media (orientation: landscape) and (max-width: 320px) {
+      transform: translateY(0px);
     }
 
-    @include media-queries(xmedium) {
-      margin: 0 -60px 0px 0;
+    @media (orientation: landscape) and (min-width: 321px) and (max-width: 800px) {
+      margin-bottom: 30px;
+      transform: translateY(58px);
     }
 
-    @media (min-width: 540px) and (max-width: 540px) and (min-height: 720px) and (max-height: 720px) {
-      margin: 0 -60px -120px 0;
+    @media (orientation: landscape) and (min-width: 801px) and (max-width: 855px) {
+      margin-bottom: 30px;
+    }
+  }
+
+  &__right-img {
+    display: block;
+    max-width: 55%;
+    height: auto;
+
+    @include media-queries(large) {
+      max-width: 76%;
+    }
+
+    @media (orientation: landscape) and (max-width: 800px) {
+      max-width: 45%;
+      transform: translateY(58px);
     }
   }
 }

@@ -45,7 +45,13 @@ const HomeSection = () => {
           </div>
         </div>
         <div className="home__right">
-          <div className="home__right-inner-wrapper"></div>
+          <div className="home__right-inner-wrapper">
+            <img
+              className="home__right-img"
+              src="https://firebasestorage.googleapis.com/v0/b/portfolio-628b9.appspot.com/o/blob-person-main-page.png?alt=media&token=c8d098b5-9e11-47a1-b345-18b610b11265"
+              alt="Person"
+            />
+          </div>
         </div>
       </div>
     </section>
