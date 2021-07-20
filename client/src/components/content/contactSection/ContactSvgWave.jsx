@@ -7,8 +7,6 @@ const ContactSvgWave = () => {
   const dispatch = useDispatch();
   const dataWaveRefsContact = useSelector((store) => store.contactRefsWaveData);
 
-  console.log(dataWaveRefsContact);
-
   const addWaveRef = (element) => {
     if (element !== null && !dataWaveRefsContact.includes(element)) {
       dispatch(addWavesContactSection(element));

@@ -9,7 +9,6 @@ const useObserverContactWave = () => {
     const contactWaveObserver = new IntersectionObserver((entries) => {
       if (isMounted.current) {
         entries.forEach((item) => {
-          console.log(item);
           switch (true) {
             case item.isIntersecting &&
               item.target.dataset.namewave === "waveContact-1":

@@ -12,11 +12,6 @@ const ProgressCircle = ({ progress }) => {
 
   const strokeDashoffset = circumference - (progress / 100) * circumference;
 
-  console.log(radius, " radius");
-  console.log(circumference, " circumference");
-  console.log(progress);
-  console.log(strokeDashoffset, "strokeDashoffset");
-
   return (
     <Fragment>
       {progress ? (
