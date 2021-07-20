@@ -127,9 +127,13 @@
     height: 100%;
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center;
+    background-position: top center;
     transform: scale(1);
     transition: 0.4s ease-out;
+
+    &--center {
+      background-position: center;
+    }
   }
 
   &__slider-cover-loader {
