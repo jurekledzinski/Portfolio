@@ -132,6 +132,7 @@
     height: 15px;
     margin-right: 10px;
     cursor: pointer;
+    z-index: 3;
 
     @include media-queries(small) {
       margin-right: 20px;
