@@ -1,4 +1,10 @@
-import React, { useCallback, useEffect, useState, useRef } from "react";
+import React, {
+  Fragment,
+  useCallback,
+  useEffect,
+  useState,
+  useRef,
+} from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import "./ProjectsSlider.scss";
@@ -15,7 +21,7 @@ import { hideImageLoaderSlider } from "../../../reduxeStore/actions/actionLoader
 
 import CircleSpinner from "../../others/CircleSpinner";
 
-const App = () => {
+const ProjectsSlider = () => {
   const dataLoader = useSelector((store) => store.loaderImageData);
   const dataColorCover = useSelector((store) => store.hideCoverImageData);
   const { isHideCover } = dataColorCover;
@@ -33,6 +39,7 @@ const App = () => {
   const [widthSlider, setWidthSlider] = useState(900);
   const [heightSlider, setHeightSlider] = useState(350);
   const valueTranslate = useRef(33.33);
+  const timeClear = useRef(null);
 
   const events = {
     swipeUp: new Event("swipeUp"),
@@ -104,10 +111,11 @@ const App = () => {
 
   useEffect(() => {
     if (count === slides.length - 3) {
-      setTimeout(() => {
+      timeClear.current = setTimeout(() => {
         setTimeTransition(0);
         slidesContainer.current.style.transform = `translateX(-${valueTranslate.current}%)`;
         setCount(1);
+        clearTimeout(timeClear.current);
       }, 480);
       return;
     }
@@ -330,6 +338,12 @@ const App = () => {
     };
   }, []);
 
+  useEffect(() => {
+    if (window.innerWidth <= 500) {
+      setIsActive(2);
+    }
+  }, []);
+
   return (
     <div
       className="projects__slider-wrapper"
@@ -351,11 +365,14 @@ const App = () => {
                 : "projects__slider-image"
             }
             key={index}
-            // onClick={() => handleShowTitle(index)}
             onTouchStart={() => handleShowTitle(index)}
           >
             <div
-              className="projects__slider-img-frame"
+              className={
+                index === 1 || index === 4
+                  ? "projects__slider-img-frame projects__slider-img-frame--center"
+                  : "projects__slider-img-frame"
+              }
               style={{ backgroundImage: `url(${item.imgUrl})` }}
             >
               {!dataLoader.isLoadImg && (
@@ -413,4 +430,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default ProjectsSlider;
