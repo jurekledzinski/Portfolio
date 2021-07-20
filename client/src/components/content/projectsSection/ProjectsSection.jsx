@@ -6,6 +6,7 @@ import "./ProjectsSection.scss";
 import Slider from "./ProjectsSlider";
 import ProjectDetails from "./ProjectDetails";
 import ProjectsSvg from "./ProjectsSvg";
+import ProjectsSvgTwo from "./ProjectsSvgTwo";
 
 import { addSingleSection } from "../../../reduxeStore/actions/actionSections";
 import { hideDetailsProject } from "../../../reduxeStore/actions/actionHideShowDetailsProject";
@@ -55,9 +56,12 @@ const ProjectsSection = () => {
         </article>
       ) : (
         <div className="projects__wrapper">
-          <h3 className="projects__title">Projects</h3>
+          <div className="projects__wrapper-title">
+            <ProjectsSvg />
+            <h3 className="projects__title">Projects</h3>
+          </div>
+          <ProjectsSvgTwo />
           <Slider />
-          <ProjectsSvg />
         </div>
       )}
     </section>
