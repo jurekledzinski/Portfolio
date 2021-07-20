@@ -7,7 +7,6 @@ import { addSingleSection } from "../../../reduxeStore/actions/actionSections";
 import { skillsData } from "./AboutData";
 
 import AboutRight from "./AboutRight";
-import AboutSvg from "./AboutSvg";
 import ProgressCircle from "../../others/ProgressCircle";
 
 import useFetchResume from "./useFetchResume";
@@ -112,7 +111,6 @@ const AboutSection = () => {
           </div>
         </div>
         <AboutRight />
-        <AboutSvg />
       </div>
     </section>
   );
