@@ -1,0 +1,94 @@
+@use "../../../scss-variables/media-queries" as *;
+
+.home {
+  &__svg-header-1 {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 30%;
+    transform: rotate(180deg);
+    transition: 0.3s;
+    display: block;
+    animation: animateWave 1000ms cubic-bezier(0.23, 1, 0.32, 1)forwards;
+    transform-origin: bottom;
+
+    @keyframes animateWave {
+      0% {
+        transform: scale(1, 0);
+        // transform-origin: top;
+        transform-origin: top;
+      }
+      100% {
+        transform: scale(1, 1);
+        transform: rotate(180deg);
+        transform-origin: center;
+      }
+    }
+
+    @include media-queries(medium) {
+      height: 40%;
+    }
+
+    @include media-queries(large) {
+      height: 70%;
+    }
+  }
+
+  &__svg-header-1-path-1 {
+    transform: translate(0, 0);
+    opacity: 1;
+    animation: animateWaveOne 2000ms cubic-bezier(0.23, 1, 0.32, 1) forwards;
+
+    @keyframes animateWaveOne {
+      0% {
+        transform: scale(1, 0);
+        // transform-origin: top;
+        transform-origin: center;
+      }
+      100% {
+        transform: scale(1, 1);
+        // transform: rotate(180deg);
+        transform-origin: bottom;
+      }
+    }
+  }
+
+  &__svg-header-1-path-2 {
+    transform: translate(0, 50px);
+    opacity: 0.9;
+
+    animation: animateWaveTwo 3000ms cubic-bezier(0.23, 1, 0.32, 1) forwards;
+
+    @keyframes animateWaveTwo {
+      0% {
+        transform: scale(1, 0);
+        // transform-origin: top;
+        transform-origin: center;
+      }
+      100% {
+        transform: scale(1, 1);
+        // transform: rotate(180deg);
+        transform-origin: bottom;
+      }
+    }
+  }
+
+  &__svg-header-1-path-3 {
+    transform: translate(0, 100px);
+    opacity: 0.8;
+
+    // animation: animateWaveThree 4000ms cubic-bezier(0.23, 1, 0.32, 1) forwards;
+
+    // @keyframes animateWaveThree {
+    //   0% {
+    //     transform: scale(1, 0);
+    //     // transform-origin: top;
+    //     transform-origin: top;
+    //   }
+    //   100% {
+    //     transform: scale(1, 1);
+    //     transform-origin: bottom;
+    //   }
+    // }
+  }
+}

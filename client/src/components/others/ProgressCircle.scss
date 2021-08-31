@@ -1,0 +1,9 @@
+@use "../../scss-variables/media-queries" as *;
+
+.progressCircle {
+  &__circle {
+    transition: 0.35s stroke-dashoffset;
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+  }
+}

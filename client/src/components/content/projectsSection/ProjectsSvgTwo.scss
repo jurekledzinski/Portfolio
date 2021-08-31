@@ -1,0 +1,18 @@
+@use "../../../scss-variables/media-queries" as *;
+
+.projects {
+  &__blob-svg-2 {
+    position: absolute;
+    top: 0%;
+    right: -100px;
+    width: 200px;
+
+    @include media-queries(large) {
+      display: none;
+    }
+  }
+
+  &__blob-svg-2-1 {
+    transition: all 0.3s ease 0s;
+  }
+}
