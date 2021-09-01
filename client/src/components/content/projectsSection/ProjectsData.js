@@ -50,4 +50,20 @@ export const ImagesData = [
       "Node, Express",
     ],
   },
+  {
+    imgPreview:
+      "https://firebasestorage.googleapis.com/v0/b/portfolio-628b9.appspot.com/o/Weather-app-image.png?alt=media&token=d8a6bb78-f91d-4409-90c9-baef9e3e61b9",
+    imgUrl:
+      "https://firebasestorage.googleapis.com/v0/b/portfolio-628b9.appspot.com/o/Weather-app-tablet.jpg?alt=media&token=fa343112-bb0c-439f-9359-0123ea8b54bc",
+    title: "Simple Dictionary",
+    description:
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eveniet provident consequatur nam saepe tenetur. Enim ut nesciunt similique architecto amet sed placeat cupiditate cumque rem quos delectus ipsam voluptate, illo hic distinctio expedita quasi molestiae obcaecati maxime voluptates mollitia! Fuga, numquam. Deleniti earum vel autem excepturi, iste alias accusamus sunt!",
+    usedTech: [
+      "HTML",
+      "Scss",
+      "Javascript",
+      "Moment timezone",
+      "Node, Express",
+    ],
+  },
 ];
