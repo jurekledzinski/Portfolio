@@ -37,7 +37,7 @@ const ProjectsSlider = () => {
   const [timeTransition, setTimeTransition] = useState(0.5);
   const [slides, setSlides] = useState(ImagesData);
   const [widthSlider, setWidthSlider] = useState(900);
-  const [heightSlider, setHeightSlider] = useState(350);
+  const [heightSlider, setHeightSlider] = useState(400);
   const valueTranslate = useRef(33.33);
   const timeClear = useRef(null);
 
@@ -50,13 +50,13 @@ const ProjectsSlider = () => {
 
   const setSlideTransform = (sizeWindow) => {
     switch (true) {
-      case sizeWindow > 700:
+      case sizeWindow > 900:
         valueTranslate.current = 33.33;
         break;
-      case sizeWindow < 700 && sizeWindow > 500:
+      case sizeWindow < 900 && sizeWindow > 500:
         valueTranslate.current = 50;
         break;
-      case sizeWindow < 500:
+      case sizeWindow <= 500:
         valueTranslate.current = 100;
         break;
       default:
@@ -134,7 +134,7 @@ const ProjectsSlider = () => {
   };
 
   const sizeSliderDefaultAndResizeLess768 = (heightratio) => {
-    setWidthSlider(90 + "%");
+    setWidthSlider(98 + "%");
     setHeightSlider(heightratio + "px");
   };
 
@@ -177,7 +177,7 @@ const ProjectsSlider = () => {
 
       setSlideTransform(window.innerWidth);
       setWidthSlider(900 + "px");
-      setHeightSlider(350 + "px");
+      setHeightSlider(400 + "px");
 
       let sizePrecent = (900 * 100) / 900;
 
@@ -369,7 +369,7 @@ const ProjectsSlider = () => {
           >
             <div
               className={
-                index === 1 || index === 4
+                index === 1 || index === 5
                   ? "projects__slider-img-frame projects__slider-img-frame--center"
                   : "projects__slider-img-frame"
               }
