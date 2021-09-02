@@ -51,11 +51,22 @@ const ProjectDetails = () => {
                     {item2}
                   </p>
                 ))}
+                <a
+                  className="projects__git-link"
+                  href={item1.gitLink}
+                  target="_blank"
+                >
+                  Git repository
+                </a>
               </div>
               <div className="projects__inner-right">
-                <button className="projects__button-check-page">
+                <a
+                  className="projects__link-live-page"
+                  href={item1.liveApp}
+                  target="_blank"
+                >
                   Preview website online
-                </button>
+                </a>
                 <div
                   className="projects__image-devices-prewview"
                   style={{ backgroundImage: `url(${item1.imgPreview})` }}

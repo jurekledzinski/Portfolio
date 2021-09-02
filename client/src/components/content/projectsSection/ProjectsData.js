@@ -7,6 +7,8 @@ export const ImagesData = [
     title: "Hairdresser Shop",
     description:
       "Hairdresser shop is MERN stack landing page with booking system, payment in stripe, admin panel and more ...",
+    gitLink: "https://github.com/jurekledzinski/Hairdresser-shop",
+    liveApp: "https://safe-crag-32363.herokuapp.com",
     usedTech: [
       "React, React router",
       "Redux, Redux-thunk ,React Datepicker",
@@ -26,6 +28,8 @@ export const ImagesData = [
     title: "Course shop",
     description:
       "Course shop in MERN stack, payment with paypal, login and register users, slider, admin panel and more ...",
+    gitLink: "https://github.com/jurekledzinski/e-shop-courses",
+    liveApp: "https://whispering-wave-19363.herokuapp.com",
     usedTech: [
       "React",
       "React router",
@@ -44,6 +48,8 @@ export const ImagesData = [
     title: "Weather app",
     description:
       "Weather application to find weather according to city and country, change to slider after find weather in city. Display current date, time according to timezone to searched city, country and more ...",
+    gitLink: "https://github.com/jurekledzinski/Weather-app",
+    liveApp: "https://lit-sands-29020.herokuapp.com",
     usedTech: [
       "HTML",
       "Css",
@@ -55,12 +61,14 @@ export const ImagesData = [
   },
   {
     imgPreview:
-      "https://firebasestorage.googleapis.com/v0/b/portfolio-628b9.appspot.com/o/Weather-app-image.png?alt=media&token=d8a6bb78-f91d-4409-90c9-baef9e3e61b9",
+      "https://firebasestorage.googleapis.com/v0/b/portfolio-628b9.appspot.com/o/Simple%20dictionary-project.png?alt=media&token=adaf66e7-740b-4b3f-bb14-4d0346d33b80",
     imgUrl:
-      "https://firebasestorage.googleapis.com/v0/b/portfolio-628b9.appspot.com/o/Weather-app-tablet.jpg?alt=media&token=fa343112-bb0c-439f-9359-0123ea8b54bc",
+      "https://firebasestorage.googleapis.com/v0/b/portfolio-628b9.appspot.com/o/Simple%20dictionary-tablet.jpg?alt=media&token=dbfa191e-a177-4782-84b4-9f5ec3c3b3f7",
     title: "Simple Dictionary",
     description:
       'Small application where you can choose the word in given language and see its meaning, pronunciation (only english), definitions. Application is made as progressive web application "PWA" When application is offline: Can see previously searched words in online mode, Can listen audio pronunciation (only english),Save 100 words available offline',
+    gitLink: "https://github.com/jurekledzinski/Dictionary",
+    liveApp: "https://optimistic-albattani-dbb329.netlify.app",
     usedTech: ["ReactJS", "React router", "Scss", "Webpack", "Workbox"],
   },
 ];

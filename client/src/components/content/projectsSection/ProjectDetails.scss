@@ -91,18 +91,29 @@
     }
   }
 
-  &__button-check-page {
+  &__git-link {
+    color: #0074d9;
+    transition: 0.4s ease;
+    text-decoration: none;
+    cursor: pointer;
+
+    &:hover {
+      color: #2690ed;
+    }
+  }
+
+  &__link-live-page {
+    display: block;
     margin: 70px 0 20px;
     background-color: transparent;
-    border: none;
-    outline: none;
-    color: #575757;
+    color: #0074d9;
     font-size: 1.6rem;
     cursor: pointer;
     transition: 0.4s ease;
+    text-decoration: none;
 
     &:hover {
-      color: black;
+      color: #2690ed;
     }
 
     @include media-queries(large) {
