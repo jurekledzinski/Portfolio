@@ -125,6 +125,12 @@
     width: 40%;
   }
 
+  &__error-storage {
+    color: #ff4136;
+    font-size: 1.2rem;
+    text-align: left;
+  }
+
   &__right {
     position: relative;
     display: flex;

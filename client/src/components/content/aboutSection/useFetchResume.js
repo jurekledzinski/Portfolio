@@ -1,8 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useDispatch } from "react-redux";
 import axios from "axios";
 import { projectStorage } from "../../../firebase/config";
 
+import { displayErrorFirebase } from "../../../reduxeStore/actions/actionHandleErrorFirebase";
+
 const useFetchResume = () => {
+  const dispatch = useDispatch();
   const [downloadPrecentageResume, setDownloadPrecentageResume] = useState(0);
   const timeClearOne = useRef(null);
 
@@ -40,11 +44,11 @@ const useFetchResume = () => {
             );
           })
           .catch((err) => {
-            console.log(err);
+            dispatch(displayErrorFirebase("Can't fetch resume"));
           });
       })
-      .catch((error) => {
-        console.log(error);
+      .catch((err) => {
+        dispatch(displayErrorFirebase("Can't fetch resume"));
       });
   };
 

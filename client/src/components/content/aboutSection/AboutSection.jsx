@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useRef, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import "./AboutSection.scss";
 
@@ -16,6 +16,7 @@ import useObserverAbout from "./useObserverAbout";
 const AboutSection = () => {
   const aboutRef = useRef(null);
   const dispatch = useDispatch();
+  const dataErrFirebase = useSelector((store) => store.errorDateFirebase);
 
   const { downloadPrecentageResume, handleFetchResume } = useFetchResume();
   const { downloadPrecentaCertificates, handleFetchCertificates } =
@@ -68,6 +69,9 @@ const AboutSection = () => {
               </div>
             </div>
           </div>
+          {Boolean(dataErrFirebase) && (
+            <p className="about__error-storage">{dataErrFirebase}</p>
+          )}
           <div className="about__icons-wrapper">
             <button
               className="about__icon"

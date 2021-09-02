@@ -1,8 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useDispatch } from "react-redux";
 import axios from "axios";
 import { projectStorage } from "../../../firebase/config";
 
+import { displayErrorFirebase } from "../../../reduxeStore/actions/actionHandleErrorFirebase";
+
 const useFetchCertificates = () => {
+  const dispatch = useDispatch();
   const [downloadPrecentaCertificates, setDownloadPrecentageCertificates] =
     useState(0);
   const timeClearTwo = useRef(null);
@@ -41,11 +45,11 @@ const useFetchCertificates = () => {
             );
           })
           .catch((err) => {
-            console.log(err);
+            dispatch(displayErrorFirebase("Can't fetch certificate"));
           });
       })
-      .catch((error) => {
-        console.log(error);
+      .catch((err) => {
+        dispatch(displayErrorFirebase("Can't fetch certificate"));
       });
   };
 
