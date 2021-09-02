@@ -1,4 +1,5 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 
 import "./Content.scss";
 
@@ -7,9 +8,17 @@ import AboutSection from "./aboutSection/AboutSection";
 import ProjectsSection from "./projectsSection/ProjectsSection";
 import ContactSection from "./contactSection/ContactSection";
 
+import { hideMobileMenu } from "../../reduxeStore/actions/actionOpenHideMobileMenu";
+
 const Content = () => {
+  const dispatch = useDispatch();
+
+  const handleCloseMobileMenu = () => {
+    dispatch(hideMobileMenu());
+  };
+
   return (
-    <main className="main">
+    <main className="main" onClick={handleCloseMobileMenu}>
       <div className="main__cover"></div>
       <div className="main__cover-bottom"></div>
       <HomeSection />

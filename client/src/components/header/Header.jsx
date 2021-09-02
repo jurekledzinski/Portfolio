@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 import "./Header.scss";
@@ -9,13 +9,15 @@ import { headerMenuLinks } from "./HeaderMenuLinks";
 import useMoveScroll from "./customHooksHeader/useMoveScroll";
 import useScrollToSection from "./customHooksHeader/useScrollToSection";
 import useObserverSections from "./customHooksHeader/useObserverSections";
+import { openHideMobileMenu } from "../../reduxeStore/actions/actionOpenHideMobileMenu";
 
 const Header = () => {
+  const dispatch = useDispatch();
   const isActiveHeaderWrapper = useSelector((store) => store.headerWrapperData);
+  const openHideMenuData = useSelector((store) => store.openHideMenuData);
   const sessionStorageData = JSON.parse(
     sessionStorage.getItem("indexBtn") || "0"
   );
-  const [isOpenMenu, setIsOpenMenu] = useState(false);
   const [indexBtnMenu, setIndexBtnMenu] = useState(sessionStorageData);
 
   useMoveScroll(setIndexBtnMenu);
@@ -23,8 +25,23 @@ const Header = () => {
   useObserverSections();
 
   const handleOpenMobileMenu = () => {
-    setIsOpenMenu((prevValue) => !prevValue);
+    if (!openHideMenuData) {
+      dispatch(openHideMobileMenu(true));
+    } else {
+      dispatch(openHideMobileMenu(false));
+    }
   };
+
+  useEffect(() => {
+    if (indexBtnMenu !== 0) {
+      setIndexBtnMenu(0);
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "smooth",
+      });
+    }
+  }, []);
 
   return (
     <header className="header">
@@ -37,7 +54,7 @@ const Header = () => {
       >
         <nav
           className={
-            isOpenMenu
+            openHideMenuData
               ? "header__menu-wrapper header__menu-wrapper--active"
               : "header__menu-wrapper"
           }
