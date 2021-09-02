@@ -1,19 +1,31 @@
-import React, { Fragment } from "react";
+import React, { Fragment, lazy, Suspense } from "react";
 import { Provider } from "react-redux";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import store from "./reduxeStore/store/store";
 
 import "./App.scss";
 
-import MainPage from "./components/mainpage/MainPage";
+const MainPage = lazy(() => {
+  return new Promise((resolve) => {
+    setTimeout(() => resolve(import("./components/mainpage/MainPage")), 3000);
+  });
+});
+
+import PageNotFound from "./components/others/Pagenotfound";
+import LoadingIcon from "./components/others/LoaderPage";
 
 const App = () => {
   return (
     <Fragment>
       <Provider store={store}>
         <Router>
-          <Route exact path="/" component={MainPage} />
+          <Suspense fallback={<LoadingIcon />}>
+            <Switch>
+              <Route exact path="/" component={MainPage} />
+              <Route path="*" component={PageNotFound} />
+            </Switch>
+          </Suspense>
         </Router>
       </Provider>
     </Fragment>

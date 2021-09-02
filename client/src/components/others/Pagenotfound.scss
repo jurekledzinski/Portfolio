@@ -1,1 +1,60 @@
 @use "../../scss-variables/media-queries" as*;
+
+.page-not-found {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  &__text {
+    background-image: url("https://firebasestorage.googleapis.com/v0/b/dictionary-cc280.appspot.com/o/Night-sky.jpg?alt=media&token=6915fb77-a0a0-476e-9e92-7fca8fcaa7a4");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 7rem;
+    font-family: "Oswald", sans-serif;
+    font-weight: 600;
+
+    @include media-queries(small) {
+      font-size: 8rem;
+    }
+
+    @include media-queries(medium) {
+      font-size: 12rem;
+    }
+
+    @include media-queries(large) {
+      font-size: 15rem;
+    }
+  }
+
+  &__title {
+    text-align: center;
+  }
+
+  &__btn {
+    display: block;
+    padding: 10px;
+    margin: 30px auto 0 auto;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    background-color: orange;
+    color: black;
+    font-size: 1.4rem;
+    cursor: pointer;
+    transition: 0.4s ease;
+
+    @include media-queries(medium) {
+      padding: 15px;
+      font-size: 1.6rem;
+    }
+
+    &:hover {
+      background-color: rgb(208, 135, 0);
+    }
+  }
+}

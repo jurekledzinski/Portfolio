@@ -1,0 +1,21 @@
+.loader-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__svg {
+    position: absolute;
+    top: 50%;
+    left: calc(50% - 20px);
+    transform: translate(-50%, -50%);
+    width: 70px;
+    height: 70px;
+    margin: 20px;
+    display: inline-block;
+  }
+
+  &__svg-path {
+    fill: rgb(255, 186, 58);
+  }
+}

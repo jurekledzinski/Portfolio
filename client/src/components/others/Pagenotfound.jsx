@@ -1,9 +1,24 @@
 import React from "react";
+import { useHistory } from "react-router";
 
-import "./Pagenotfound.scss";
+import "./PagenotFound.scss";
 
-const Pagenotfound = () => {
-  return <div>Page not found</div>;
+const PageNotFound = () => {
+  const history = useHistory();
+
+  const handleRedirectHomePage = () => {
+    history.push("/");
+  };
+
+  return (
+    <div className="page-not-found">
+      <h1 className="page-not-found__text">Oops!</h1>
+      <h2 className="page-not-found__title">Page not found</h2>
+      <button className="page-not-found__btn" onClick={handleRedirectHomePage}>
+        Back to homepage
+      </button>
+    </div>
+  );
 };
 
-export default Pagenotfound;
+export default PageNotFound;
