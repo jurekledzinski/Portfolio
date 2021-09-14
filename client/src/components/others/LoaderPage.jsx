@@ -1,10 +1,13 @@
 import React from "react";
 
 import "./LoaderPage.scss";
+import LoadingTitleOne from "./LoadingTitleOne";
+import LoadingTitleTwo from "./LoadingTitleTwo";
 
 const LoaderPage = () => {
   return (
     <div className="loader-page">
+      <LoadingTitleOne />
       <svg
         className="loader-page__svg"
         version="1.1"
@@ -63,6 +66,7 @@ const LoaderPage = () => {
           />
         </path>
       </svg>
+      <LoadingTitleTwo />
     </div>
   );
 };
