@@ -8,7 +8,7 @@ import "./App.scss";
 
 const MainPage = lazy(() => {
   return new Promise((resolve) => {
-    setTimeout(() => resolve(import("./components/mainpage/MainPage")), 3000);
+    setTimeout(() => resolve(import("./components/mainpage/MainPage")), 4500);
   });
 });
 
