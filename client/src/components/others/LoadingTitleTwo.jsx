@@ -1,17 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 import "./LoadingTitleTwo.scss";
 
 const LoadingTitleTwo = () => {
-  useEffect(() => {
-    const paths = document.querySelectorAll(
-      ".loading-title-two__path--1, .loading-title-two__path--2,.loading-title-two__path--3,.loading-title-two__path--4, .loading-title-two__path--5,.loading-title-two__path--6,.loading-title-two__path--7, .loading-title-two__path--8,.loading-title-two__path--9,.loading-title-two__path--10, .loading-title-two__path--11,.loading-title-two__path--12,.loading-title-two__path--13, .loading-title-two__path--14, .loading-title-two__path--15,.loading-title-two__path--16,.loading-title-two__path--17,.loading-title-two__path--18"
-    );
-
-    for (let i = 0; i < paths.length; i++) {
-      console.log(`Number ${i + 1} is ${paths[i].getTotalLength()}`);
-    }
-  }, []);
   return (
     <div className="loading-title-two">
       <svg
