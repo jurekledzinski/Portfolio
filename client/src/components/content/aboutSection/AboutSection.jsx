@@ -36,12 +36,12 @@ const AboutSection = () => {
           <h3 className="about__title">About me</h3>
           <div className="about__text-wrapper">
             <p className="about__text">
-              Doesn’t matter if you’re creating a serious app thatcalls for a
-              German philosopher from the 1800s or some Back to the Future
-              quotes – the internet is a wonderful place, and it has endless
-              alternatives to Lorem Ipsum. We just thought you would definitely
-              want to hear about these 10 awesome ones firstThe Rate of Low Type
-              The Rate of Low Type The Rate of Low Type
+              My name is Jurek and welcome you on my portfolio website. Here you
+              can find some of my projects, below of the page. I'm interested in
+              HTML ,CSS, Javascript, React.js, Node.js and other technologies
+              which are combined to MERN stack aplications. Currently I'm
+              learning also Next.js and I'm willing to learn other interesting
+              things which are related to web development.
             </p>
           </div>
           <div className="about__skills-wrapper">
