@@ -4,16 +4,9 @@ const express = require("express");
 const path = require("path");
 const cors = require("cors");
 const mongoose = require("mongoose");
-const session = require("express-session");
-const MongoStore = require("connect-mongo");
 const port = process.env.PORT || 5000;
 
-const {
-  atlasUrl,
-  nodeEnv,
-  sessionName,
-  secretSession,
-} = require("./configs/config");
+const { atlasUrl } = require("./configs/config");
 
 mongoose.connect(atlasUrl, {
   useNewUrlParser: true,
@@ -51,24 +44,6 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
-
-app.use(
-  session({
-    name: sessionName,
-    secret: secretSession,
-    resave: false,
-    saveUninitialized: false,
-    store: MongoStore.create({
-      mongoUrl: atlasUrl,
-    }),
-    cookie: {
-      httpOnly: true,
-      maxAge: 3 * 24 * 60 * 60 * 1000,
-      secure: false,
-      sameSite: nodeEnv === "production" ? "lax" : "lax",
-    },
-  })
-);
 
 app.use(function (req, res, next) {
   res.setHeader(
