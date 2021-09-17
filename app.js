@@ -4,7 +4,6 @@ const express = require("express");
 const path = require("path");
 const cors = require("cors");
 const mongoose = require("mongoose");
-const port = process.env.PORT || 5000;
 
 const { atlasUrl } = require("./configs/config");
 
@@ -63,10 +62,6 @@ app.use((error, req, res, next) => {
     statusCode: error.status,
     alert: error.msgError,
   });
-});
-
-app.listen(port, () => {
-  console.log(`Server dziala na porcie ${port}`);
 });
 
 module.exports = app;
