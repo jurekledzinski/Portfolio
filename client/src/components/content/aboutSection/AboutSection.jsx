@@ -109,10 +109,15 @@ const AboutSection = () => {
             <a
               className="about__icon"
               href="https://www.linkedin.com/in/jurek-ledzinski-22a8a57b"
+              target="_blank"
             >
               <i className="fab fa-linkedin"></i>
             </a>
-            <a className="about__icon" href="https://github.com/jurekledzinski">
+            <a
+              className="about__icon"
+              href="https://github.com/jurekledzinski"
+              target="_blank"
+            >
               <i className="fab fa-github"></i>
             </a>
           </div>
