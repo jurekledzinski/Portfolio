@@ -106,10 +106,13 @@ const AboutSection = () => {
                 </Fragment>
               )}
             </button>
-            <a className="about__icon" href="https://www.linkedin.com">
+            <a
+              className="about__icon"
+              href="https://www.linkedin.com/in/jurek-ledzinski-22a8a57b"
+            >
               <i className="fab fa-linkedin"></i>
             </a>
-            <a className="about__icon" href="https://github.com">
+            <a className="about__icon" href="https://github.com/jurekledzinski">
               <i className="fab fa-github"></i>
             </a>
           </div>

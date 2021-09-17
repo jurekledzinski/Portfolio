@@ -122,7 +122,10 @@ const ContactSection = () => {
                     Send
                   </button>
                 </Form>
-                <a className="contact__icon" href="https://www.linkedin.com">
+                <a
+                  className="contact__icon"
+                  href="https://www.linkedin.com/in/jurek-ledzinski-22a8a57b"
+                >
                   <i className="fab fa-linkedin"></i>
                 </a>
               </div>
