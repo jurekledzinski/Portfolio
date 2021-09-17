@@ -36,12 +36,12 @@ const AboutSection = () => {
           <h3 className="about__title">About me</h3>
           <div className="about__text-wrapper">
             <p className="about__text">
-              My name is Jurek and welcome you on my portfolio website. Here you
-              can find some of my projects, below of the page. I'm interested in
-              HTML ,CSS, Javascript, React.js, Node.js and other technologies
-              which are combined to MERN stack aplications. Currently I'm
-              learning also Next.js and I'm willing to learn other interesting
-              things which are related to web development.
+              My name is Jurek and I welcome you on my portfolio website. Here
+              you can find some of my projects, below of the page. I'm
+              interested in HTML ,CSS, Javascript, React.js, Node.js and other
+              technologies which are combined to MERN stack aplications.
+              Currently I'm learning also Next.js and I'm willing to learn other
+              interesting things which are related to web development.
             </p>
           </div>
           <div className="about__skills-wrapper">
