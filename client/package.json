@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "proxy": "https://powerful-cliffs-92962.herokuapp.com",
   "scripts": {
     "build": "webpack --mode=production",
     "dev": "webpack serve --mode=development",
