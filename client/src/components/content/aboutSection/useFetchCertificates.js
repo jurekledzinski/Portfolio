@@ -13,7 +13,7 @@ const useFetchCertificates = () => {
 
   const handleFetchCertificates = () => {
     let percent = 0;
-    const pathRef = projectStorage.ref("Certificates test.pdf");
+    const pathRef = projectStorage.ref("Certificates.pdf");
 
     pathRef
       .getDownloadURL()
@@ -33,7 +33,7 @@ const useFetchCertificates = () => {
             const toUrl = window.URL.createObjectURL(new Blob([response.data]));
             const link = document.createElement("a");
             link.href = toUrl;
-            link.setAttribute("download", "Certificates.pdf");
+            link.setAttribute("download", "Certificates Jerzy Ledzinski.pdf");
             link.style.display = "none";
             document.body.appendChild(link);
             link.click();

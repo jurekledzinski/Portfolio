@@ -12,7 +12,7 @@ const useFetchResume = () => {
 
   const handleFetchResume = () => {
     let percent = 0;
-    const pathReference = projectStorage.ref("Resume test.pdf");
+    const pathReference = projectStorage.ref("Resume Jerzy Ledzinski.pdf");
 
     pathReference
       .getDownloadURL()
@@ -32,7 +32,7 @@ const useFetchResume = () => {
             const toUrl = window.URL.createObjectURL(new Blob([response.data]));
             const link = document.createElement("a");
             link.href = toUrl;
-            link.setAttribute("download", "Resume test.pdf");
+            link.setAttribute("download", "Resume Jerzy Ledzinski.pdf");
             link.style.display = "none";
             document.body.appendChild(link);
             link.click();
