@@ -23,7 +23,7 @@ db.on("error", (err) => {
   errDb;
 });
 db.once("open", () => {
-  console.log("Baza dziala poprawnie");
+  openDb;
 });
 
 const emailRouter = require("./routes/email");
