@@ -36,7 +36,6 @@
       justify-content: initial;
       align-items: initial;
       min-height: initial;
-      height: 100%;
       padding: 50px 50px 0 50px;
     }
   }
@@ -274,5 +273,19 @@
       top: -25px;
       right: -122px;
     }
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 10px;
+
+    @media (min-width: 733px) {
+      margin-top: 30px;
+    }
+  }
+
+  &__rights {
+    z-index: 1;
   }
 }

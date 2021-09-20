@@ -157,6 +157,11 @@ const ContactSection = () => {
         </svg>
       </div>
       <ContactSvgWave />
+      <footer className="contact__footer">
+        <p className="contact__rights">
+          All rights reserved &copy;{new Date().getFullYear()} Jerzy Ledziński
+        </p>
+      </footer>
     </section>
   );
 };
