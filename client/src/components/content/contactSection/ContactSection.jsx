@@ -1,23 +1,23 @@
-import React, { useEffect, useRef } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Formik, Form, Field, ErrorMessage } from "formik";
-import * as Yup from "yup";
+import React, { useEffect, useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
 
-import { sendEmail } from "../../../utils/sessions";
+import { sendEmail } from '../../../utils/sessions';
 
-import ContactSvgWave from "./ContactSvgWave";
-import ServerMessage from "./ServerMessage";
+import ContactSvgWave from './ContactSvgWave';
+import ServerMessage from './ServerMessage';
 
 import {
   addServerErrorMessage,
   addServerSuccessMessage,
   clearServerMessage,
-} from "../../../reduxeStore/actions/actionServerMessages";
+} from '../../../reduxeStore/actions/actionServerMessages';
 
-import "./ContactSection.scss";
+import './ContactSection.scss';
 
-import { addSingleSection } from "../../../reduxeStore/actions/actionSections";
-import useObserverContactWave from "./useObserverContactWave";
+import { addSingleSection } from '../../../reduxeStore/actions/actionSections';
+import useObserverContactWave from './useObserverContactWave';
 
 const ContactSection = () => {
   const contactRef = useRef(null);
@@ -28,15 +28,15 @@ const ContactSection = () => {
   useObserverContactWave();
 
   const initialValues = {
-    name: "",
-    email: "",
-    message: "",
+    name: '',
+    email: '',
+    message: '',
   };
 
   const validationSchema = Yup.object({
-    name: Yup.string().required("Name is required"),
-    email: Yup.string().email("Invalid email").required("Email required"),
-    message: Yup.string().required("Message is required"),
+    name: Yup.string().required('Name is required'),
+    email: Yup.string().email('Invalid email').required('Email required'),
+    message: Yup.string().required('Message is required'),
   });
 
   const onSubmit = async (values, submitProps) => {
@@ -72,97 +72,107 @@ const ContactSection = () => {
   }, []);
 
   return (
-    <section className="contact" ref={contactRef}>
-      <div className="contact__wrapper">
-        <Formik
-          initialValues={initialValues}
-          validationSchema={validationSchema}
-          onSubmit={onSubmit}
-        >
-          {(formik) => {
-            return (
-              <div className="contact__form-wrapper">
-                <h3 className="contact__title">Contact</h3>
-                <Form className="contact__form" onSubmit={formik.handleSubmit}>
-                  {!Boolean(Object.keys(formik.errors).length) &&
-                  dataMsgServer.errorServerMsg ? (
-                    <ServerMessage />
-                  ) : (
-                    <ServerMessage />
-                  )}
-                  <ErrorMessage name="name" component={errorMsg} />
-                  <label className="contact__label">Name:</label>
-                  <Field
-                    className="contact__input"
-                    name="name"
-                    placeholder="Name surname"
-                    type="text"
-                  />
-                  <ErrorMessage name="email" component={errorMsg} />
-                  <label className="contact__label">Email:</label>
-                  <Field
-                    className="contact__input"
-                    name="email"
-                    type="email"
-                    placeholder="Your email"
-                  />
-                  <ErrorMessage name="message" component={errorMsg} />
-                  <label className="contact__label">Message:</label>
-                  <Field
-                    as="textarea"
-                    className="contact__textarea"
-                    name="message"
-                    placeholder="Type in your message..."
-                  />
-                  <button
-                    className="contact__button"
-                    type="submit"
-                    disabled={!formik.isValid}
+    <>
+      <section className="contact" ref={contactRef}>
+        <div className="contact__wrapper">
+          <Formik
+            initialValues={initialValues}
+            validationSchema={validationSchema}
+            onSubmit={onSubmit}
+          >
+            {(formik) => {
+              return (
+                <div className="contact__form-wrapper">
+                  <h3 className="contact__title">Contact</h3>
+                  <Form
+                    className="contact__form"
+                    onSubmit={formik.handleSubmit}
                   >
-                    Send
-                  </button>
-                </Form>
-                <a
-                  className="contact__icon"
-                  href="https://www.linkedin.com/in/jurek-ledzinski-22a8a57b"
-                  target="_blank"
-                >
-                  <i className="fab fa-linkedin"></i>
-                </a>
-              </div>
-            );
-          }}
-        </Formik>
-
-        <svg
-          className="contact__blob-1"
-          preserveAspectRatio="none"
-          viewBox="0 0 500 500"
-          xmlns="http://www.w3.org/2000/svg"
-          xmlnsXlink="http://www.w3.org/1999/xlink"
-          width="100%"
-          id="blobSvg"
-        >
-          <defs>
-            <linearGradient id="gradient-15" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop stopColor="rgba(253, 200, 48, 0.55)" offset="0%"></stop>
-              <stop stopColor="rgba(243, 115, 53, 0.4)" offset="100%"></stop>
-            </linearGradient>
-          </defs>
-          <path
-            id="blob"
-            d="M313.5,326Q299,402,237,353Q175,304,132,218.5Q89,133,201.5,93Q314,53,321,151.5Q328,250,313.5,326Z"
-            fill="url(#gradient-15)"
-          ></path>
-        </svg>
-      </div>
-      <ContactSvgWave />
-      <footer className="contact__footer">
-        <p className="contact__rights">
-          All rights reserved &copy;{new Date().getFullYear()} Jerzy Ledziński
-        </p>
-      </footer>
-    </section>
+                    {!Boolean(Object.keys(formik.errors).length) &&
+                    dataMsgServer.errorServerMsg ? (
+                      <ServerMessage />
+                    ) : (
+                      <ServerMessage />
+                    )}
+                    <ErrorMessage name="name" component={errorMsg} />
+                    <label className="contact__label">Name:</label>
+                    <Field
+                      className="contact__input"
+                      name="name"
+                      placeholder="Name surname"
+                      type="text"
+                    />
+                    <ErrorMessage name="email" component={errorMsg} />
+                    <label className="contact__label">Email:</label>
+                    <Field
+                      className="contact__input"
+                      name="email"
+                      type="email"
+                      placeholder="Your email"
+                    />
+                    <ErrorMessage name="message" component={errorMsg} />
+                    <label className="contact__label">Message:</label>
+                    <Field
+                      as="textarea"
+                      className="contact__textarea"
+                      name="message"
+                      placeholder="Type in your message..."
+                    />
+                    <button
+                      className="contact__button"
+                      type="submit"
+                      disabled={!formik.isValid}
+                    >
+                      Send
+                    </button>
+                  </Form>
+                  <a
+                    className="contact__icon"
+                    href="https://www.linkedin.com/in/jurek-ledzinski-22a8a57b"
+                    target="_blank"
+                  >
+                    <i className="fab fa-linkedin"></i>
+                  </a>
+                </div>
+              );
+            }}
+          </Formik>
+          <svg
+            className="contact__blob-1"
+            preserveAspectRatio="none"
+            viewBox="0 0 500 500"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlnsXlink="http://www.w3.org/1999/xlink"
+            width="100%"
+            id="blobSvg"
+          >
+            <defs>
+              <linearGradient
+                id="gradient-15"
+                x1="0%"
+                y1="0%"
+                x2="0%"
+                y2="100%"
+              >
+                <stop stopColor="rgba(253, 200, 48, 0.55)" offset="0%"></stop>
+                <stop stopColor="rgba(243, 115, 53, 0.4)" offset="100%"></stop>
+              </linearGradient>
+            </defs>
+            <path
+              id="blob"
+              d="M313.5,326Q299,402,237,353Q175,304,132,218.5Q89,133,201.5,93Q314,53,321,151.5Q328,250,313.5,326Z"
+              fill="url(#gradient-15)"
+            ></path>
+          </svg>
+        </div>
+        <ContactSvgWave />
+        <footer className="contact__footer">
+          <p className="contact__rights">
+            All rights reserved &copy;{new Date().getFullYear()} Jerzy Ledziński
+          </p>
+        </footer>
+      </section>
+    </>
   );
 };
 

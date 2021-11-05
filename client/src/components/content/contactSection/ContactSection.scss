@@ -1,4 +1,4 @@
-@use "../../../scss-variables/media-queries" as *;
+@use '../../../scss-variables/media-queries' as *;
 
 .contact {
   position: relative;
@@ -21,8 +21,10 @@
     min-height: inherit;
     padding: 80px 10px 50px 10px;
     margin: 0 auto;
-    z-index: 1;
     overflow: hidden;
+    z-index: 3;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
 
     @include media-queries(small) {
       padding: 80px 20px 50px 20px;
@@ -45,7 +47,7 @@
     text-align: left;
     color: #333333;
     letter-spacing: 1px;
-    z-index: 1;
+    position: relative;
 
     @include media-queries(xsmall) {
       top: 10px;
@@ -56,90 +58,16 @@
     }
   }
 
-  &__svg-1 {
-    position: absolute;
-    bottom: 0;
-    transform: rotate(0deg);
-    transition: 0.3s;
-    height: 400px;
-    width: 100%;
-    display: block;
-    transform-origin: bottom;
-    transform: scale(1, 0);
-
-    @keyframes animateWaveContact {
-      0% {
-        transform: scale(1, 0);
-        transform-origin: bottom;
-      }
-      100% {
-        transform: scale(1, 1);
-      }
-    }
-  }
-
-  &__svg-2 {
-    position: absolute;
-    bottom: 0;
-    transform: translate(0, 0px);
-    opacity: 1;
-    transform-origin: bottom;
-
-    @keyframes animateWaveContactTwo {
-      0% {
-        transform: scale(1, 0);
-      }
-      100% {
-        transform: scale(1, 1);
-        transform-origin: bottom;
-      }
-    }
-  }
-
-  &__svg-3 {
-    position: absolute;
-    bottom: 0;
-    transform: translate(0, 50px);
-    opacity: 0.9;
-    transform-origin: bottom;
-
-    @keyframes animateWaveContactThree {
-      0% {
-        transform: scale(1, 0);
-      }
-      100% {
-        transform: scale(1, 1);
-        transform-origin: bottom;
-      }
-    }
-  }
-
-  &__svg-4 {
-    position: absolute;
-    bottom: 0;
-    transform: translate(0, 100px);
-    opacity: 0.8;
-    transform-origin: bottom;
-
-    @keyframes animateWaveContactFour {
-      0% {
-        transform: scale(1, 0);
-      }
-      100% {
-        transform: scale(1, 1);
-        transform-origin: bottom;
-      }
-    }
-  }
-
   &__form {
     display: flex;
     flex-direction: column;
+    position: relative;
   }
 
   &__form-wrapper {
     position: relative;
     width: 100%;
+    z-index: 4;
 
     @include media-queries(medium) {
       width: 100%;
@@ -154,7 +82,8 @@
     margin: 5px 0;
     color: white;
     font-size: 1.2rem;
-    font-family: "Roboto", sans-serif;
+    font-family: 'Roboto', sans-serif;
+    position: relative;
 
     @include media-queries(small) {
       font-size: 1.3rem;
@@ -171,7 +100,8 @@
     border: none;
     outline: none;
     text-indent: 5px;
-    font-family: "Roboto", sans-serif;
+    font-family: 'Roboto', sans-serif;
+    position: relative;
   }
 
   &__textarea {
@@ -181,7 +111,9 @@
     border: none;
     outline: none;
     text-indent: 5px;
-    font-family: "Roboto", sans-serif;
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+    z-index: 4;
   }
 
   &__button {
@@ -192,10 +124,12 @@
     background-color: #1981dc;
     color: white;
     font-size: 1.4rem;
-    font-family: "Oswald", sans-serif;
+    font-family: 'Oswald', sans-serif;
     letter-spacing: 1px;
     cursor: pointer;
     transition: 0.4s ease;
+    position: relative;
+    z-index: 4;
 
     &:hover {
       background-color: #0074d9;
@@ -217,7 +151,7 @@
     text-align: left;
     font-weight: 100;
     letter-spacing: 1px;
-    font-family: "Roboto", sans-serif;
+    font-family: 'Roboto', sans-serif;
   }
 
   &__icon {
@@ -229,6 +163,7 @@
     cursor: pointer;
     text-decoration: none;
     transition: 0.4s ease;
+    z-index: 4;
 
     &:hover {
       color: #1981dc;
@@ -279,13 +214,59 @@
     display: flex;
     justify-content: center;
     padding-bottom: 10px;
+    position: relative;
+    z-index: 4;
 
     @media (min-width: 733px) {
       margin-top: 30px;
+      position: relative;
     }
   }
 
   &__rights {
-    z-index: 1;
+    position: relative;
+    color: #333;
+    font-weight: 300;
+  }
+
+  &__svg-1 {
+    position: absolute;
+    bottom: 0;
+    transform: rotate(0deg);
+    transition: 1s cubic-bezier(0.23, 1, 0.32, 1);
+    height: 400px;
+    width: 100%;
+    display: block;
+    transform-origin: bottom;
+    transform: scale(1, 0);
+
+    &--active {
+      z-index: 1;
+      transform: scale(1, 1);
+    }
+  }
+
+  &__svg-2 {
+    position: absolute;
+    bottom: 0;
+    transform: translate(0, 0px);
+    opacity: 1;
+    transform-origin: bottom;
+  }
+
+  &__svg-3 {
+    position: absolute;
+    bottom: 0;
+    transform: translate(0, 50px);
+    opacity: 0.9;
+    transform-origin: bottom;
+  }
+
+  &__svg-4 {
+    position: absolute;
+    bottom: 0;
+    transform: translate(0, 100px);
+    opacity: 0.8;
+    transform-origin: bottom;
   }
 }
