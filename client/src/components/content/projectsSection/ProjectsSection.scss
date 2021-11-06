@@ -1,8 +1,10 @@
-@use "../../../scss-variables/media-queries" as*;
+@use '../../../scss-variables/media-queries' as *;
 
 .projects {
+  position: relative;
   width: 100%;
   min-height: 100vh;
+  z-index: 1;
 
   @include media-queries(large) {
     min-height: initial;
@@ -79,7 +81,7 @@
     border: none;
     outline: none;
     font-size: 1.6rem;
-    font-family: "Oswald", "sans-serif";
+    font-family: 'Oswald', 'sans-serif';
     font-weight: 500;
     cursor: pointer;
   }
