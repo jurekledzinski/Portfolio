@@ -1,4 +1,4 @@
-@use "../../scss-variables/media-queries" as*;
+@use '../../scss-variables/media-queries' as *;
 
 .page-not-found {
   position: absolute;
@@ -7,7 +7,7 @@
   transform: translate(-50%, -50%);
 
   &__text {
-    background-image: url("https://firebasestorage.googleapis.com/v0/b/dictionary-cc280.appspot.com/o/Night-sky.jpg?alt=media&token=6915fb77-a0a0-476e-9e92-7fca8fcaa7a4");
+    background-image: url('https://firebasestorage.googleapis.com/v0/b/dictionary-cc280.appspot.com/o/Night-sky.jpg?alt=media&token=6915fb77-a0a0-476e-9e92-7fca8fcaa7a4');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -15,7 +15,7 @@
     background-clip: text;
     -webkit-text-fill-color: transparent;
     font-size: 7rem;
-    font-family: "Oswald", sans-serif;
+    font-family: 'Oswald', sans-serif;
     font-weight: 600;
 
     @include media-queries(small) {
