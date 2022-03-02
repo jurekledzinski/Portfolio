@@ -4,22 +4,22 @@ import React, {
   useEffect,
   useState,
   useRef,
-} from "react";
-import { useDispatch, useSelector } from "react-redux";
+} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-import "./ProjectsSlider.scss";
+import './ProjectsSlider.scss';
 
-import { ImagesData } from "./ProjectsData";
+import { ImagesData } from './ProjectsData';
 
-import { showDetailsProject } from "../../../reduxeStore/actions/actionHideShowDetailsProject";
-import { addIndexCart } from "../../../reduxeStore/actions/actionGetIndexCart";
+import { showDetailsProject } from '../../../reduxeStore/actions/actionHideShowDetailsProject';
+import { addIndexCart } from '../../../reduxeStore/actions/actionGetIndexCart';
 import {
   hideLoaderInDetails,
   showLoaderInDetails,
-} from "../../../reduxeStore/actions/actionShowLoaderInDetailsProject";
-import { hideImageLoaderSlider } from "../../../reduxeStore/actions/actionLoaderImagesSlider";
+} from '../../../reduxeStore/actions/actionShowLoaderInDetailsProject';
+import { hideImageLoaderSlider } from '../../../reduxeStore/actions/actionLoaderImagesSlider';
 
-import CircleSpinner from "../../others/CircleSpinner";
+import CircleSpinner from '../../others/CircleSpinner';
 
 const ProjectsSlider = () => {
   const dataLoader = useSelector((store) => store.loaderImageData);
@@ -42,10 +42,10 @@ const ProjectsSlider = () => {
   const timeClear = useRef(null);
 
   const events = {
-    swipeUp: new Event("swipeUp"),
-    swipeDown: new Event("swipeDown"),
-    swipeLeft: new Event("swipeLeft"),
-    swipeRight: new Event("swipeRight"),
+    swipeUp: new Event('swipeUp'),
+    swipeDown: new Event('swipeDown'),
+    swipeLeft: new Event('swipeLeft'),
+    swipeRight: new Event('swipeRight'),
   };
 
   const setSlideTransform = (sizeWindow) => {
@@ -129,18 +129,18 @@ const ProjectsSlider = () => {
   const sizeSliderDefaultAndResizeLess1200 = (ratioHeight) => {
     let diff2 = (900 * 100) / window.innerWidth - (900 * 100) / 900;
     let px = (window.innerWidth / 100) * 100 - diff2 - 100;
-    setWidthSlider(px + "px");
-    setHeightSlider(ratioHeight + "px");
+    setWidthSlider(px + 'px');
+    setHeightSlider(ratioHeight + 'px');
   };
 
   const sizeSliderDefaultAndResizeLess768 = (heightratio) => {
-    setWidthSlider(98 + "%");
-    setHeightSlider(heightratio + "px");
+    setWidthSlider(98 + '%');
+    setHeightSlider(heightratio + 'px');
   };
 
   const sizeSliderResizeLess500 = (heightratio) => {
-    setWidthSlider(92 + "%");
-    setHeightSlider(heightratio + "px");
+    setWidthSlider(92 + '%');
+    setHeightSlider(heightratio + 'px');
   };
 
   useEffect(() => {
@@ -149,7 +149,7 @@ const ProjectsSlider = () => {
     const ratio = Math.min(widthInnerWindow / heightInnerWindow);
 
     const sizePrecent = (900 * 100) / 900;
-    setWidthSlider(sizePrecent + "%");
+    setWidthSlider(sizePrecent + '%');
 
     if (window.innerWidth < 900 && isMounted.current) {
       let ratioHeight = (heightInnerWindow * ratio) / 2;
@@ -172,12 +172,12 @@ const ProjectsSlider = () => {
   useEffect(() => {
     const resizeSlider = () => {
       let isTouch =
-        "ontouchstart" in window || window.navigator.maxTouchPoints > 0;
-      document.documentElement.className = isTouch ? "touch" : "no-touch";
+        'ontouchstart' in window || window.navigator.maxTouchPoints > 0;
+      document.documentElement.className = isTouch ? 'touch' : 'no-touch';
 
       setSlideTransform(window.innerWidth);
-      setWidthSlider(900 + "px");
-      setHeightSlider(400 + "px");
+      setWidthSlider(900 + 'px');
+      setHeightSlider(400 + 'px');
 
       let sizePrecent = (900 * 100) / 900;
 
@@ -186,7 +186,7 @@ const ProjectsSlider = () => {
 
       let ratio = Math.min(widthWindowInner / heightWindowInner);
 
-      setWidthSlider(sizePrecent + "%");
+      setWidthSlider(sizePrecent + '%');
 
       if (window.innerWidth < 900 && isMounted.current) {
         let ratioHeight = (heightWindowInner * ratio) / 2;
@@ -205,10 +205,10 @@ const ProjectsSlider = () => {
         sizeSliderResizeLess500(heightRatio);
       }
     };
-    window.addEventListener("resize", resizeSlider);
+    window.addEventListener('resize', resizeSlider);
 
     return function cleanupListenerSlider() {
-      window.removeEventListener("resize", resizeSlider);
+      window.removeEventListener('resize', resizeSlider);
     };
   }, []);
 
@@ -267,15 +267,15 @@ const ProjectsSlider = () => {
     };
 
     if (slidesContainer.current) {
-      slidesContainer.current.addEventListener("touchstart", startTouchDisplay);
-      slidesContainer.current.addEventListener("touchmove", moveTouchDisplay);
+      slidesContainer.current.addEventListener('touchstart', startTouchDisplay);
+      slidesContainer.current.addEventListener('touchmove', moveTouchDisplay);
     }
 
     let container = slidesContainer.current;
     return () => {
       if (container) {
-        container.removeEventListener("touchstart", startTouchDisplay);
-        container.removeEventListener("touchmove", moveTouchDisplay);
+        container.removeEventListener('touchstart', startTouchDisplay);
+        container.removeEventListener('touchmove', moveTouchDisplay);
       }
     };
   }, [
@@ -289,16 +289,16 @@ const ProjectsSlider = () => {
 
   useEffect(() => {
     if (Boolean(slidesContainer.current)) {
-      slidesContainer.current.addEventListener("swipeLeft", handleMoveLeft);
-      slidesContainer.current.addEventListener("swipeRight", handleMoveRight);
+      slidesContainer.current.addEventListener('swipeLeft', handleMoveLeft);
+      slidesContainer.current.addEventListener('swipeRight', handleMoveRight);
     }
 
     let sliderWrapper = slidesContainer.current;
 
     return () => {
       if (sliderWrapper) {
-        sliderWrapper.removeEventListener("swipeLeft", handleMoveLeft);
-        sliderWrapper.removeEventListener("swipeRight", handleMoveRight);
+        sliderWrapper.removeEventListener('swipeLeft', handleMoveLeft);
+        sliderWrapper.removeEventListener('swipeRight', handleMoveRight);
       }
     };
   }, [handleMoveLeft, handleMoveRight]);
@@ -328,8 +328,8 @@ const ProjectsSlider = () => {
 
   useEffect(() => {
     let isTouch =
-      "ontouchstart" in window || window.navigator.maxTouchPoints > 0;
-    document.documentElement.className = isTouch ? "touch" : "no-touch";
+      'ontouchstart' in window || window.navigator.maxTouchPoints > 0;
+    document.documentElement.className = isTouch ? 'touch' : 'no-touch';
     isMounted.current = true;
     return () => {
       isMounted.current = false;
@@ -340,7 +340,7 @@ const ProjectsSlider = () => {
 
   useEffect(() => {
     if (window.innerWidth <= 500) {
-      setIsActive(2);
+      setIsActive(1);
     }
   }, []);
 
@@ -361,8 +361,8 @@ const ProjectsSlider = () => {
           <div
             className={
               isActive === index
-                ? "projects__slider-image projects__slider-image--mobile"
-                : "projects__slider-image"
+                ? 'projects__slider-image projects__slider-image--mobile'
+                : 'projects__slider-image'
             }
             key={index}
             onTouchStart={() => handleShowTitle(index)}
@@ -370,8 +370,8 @@ const ProjectsSlider = () => {
             <div
               className={
                 index === 1 || index === 5
-                  ? "projects__slider-img-frame projects__slider-img-frame--center"
-                  : "projects__slider-img-frame"
+                  ? 'projects__slider-img-frame projects__slider-img-frame--center'
+                  : 'projects__slider-img-frame'
               }
               style={{ backgroundImage: `url(${item.imgUrl})` }}
             >
@@ -390,8 +390,8 @@ const ProjectsSlider = () => {
             <div
               className={
                 isHideCover
-                  ? "projects__slider-image-cover projects__slider-image-cover--change-color"
-                  : "projects__slider-image-cover"
+                  ? 'projects__slider-image-cover projects__slider-image-cover--change-color'
+                  : 'projects__slider-image-cover'
               }
             >
               <p className="projects__slider-image-title">{item.title}</p>
@@ -409,8 +409,8 @@ const ProjectsSlider = () => {
       <button
         className={
           isHideCover
-            ? "projects__slider-button-left projects__slider-button-left--hide"
-            : "projects__slider-button-left"
+            ? 'projects__slider-button-left projects__slider-button-left--hide'
+            : 'projects__slider-button-left'
         }
         onClick={handleMoveLeft}
       >
@@ -419,8 +419,8 @@ const ProjectsSlider = () => {
       <button
         className={
           isHideCover
-            ? "projects__slider-button-right projects__slider-button-right--hide"
-            : "projects__slider-button-right"
+            ? 'projects__slider-button-right projects__slider-button-right--hide'
+            : 'projects__slider-button-right'
         }
         onClick={handleMoveRight}
       >
