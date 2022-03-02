@@ -1,7 +1,7 @@
-const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 module.exports = {
-  mode: "development",
+  mode: 'development',
   optimization: {
     minimizer: [new CssMinimizerPlugin({})],
   },
@@ -10,20 +10,20 @@ module.exports = {
     port: 3000,
     historyApiFallback: true,
   },
-  devtool: "inline-source-map",
+  devtool: 'inline-source-map',
   module: {
     rules: [
       {
         test: /\.(jpg|png|svg|gif|jpeg)$/,
-        type: "asset/resource",
+        type: 'asset/resource',
       },
       {
         test: /\.(s(a|c)ss|css)$/,
         use: [
-          "style-loader",
-          "css-loader",
+          'style-loader',
+          'css-loader',
           {
-            loader: "sass-loader",
+            loader: 'sass-loader',
             options: {
               sourceMap: true,
             },
